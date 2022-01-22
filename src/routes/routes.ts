@@ -1,5 +1,5 @@
 export enum PATH {
-  MAIN = '/',
+  CREATE_PASSWORD = '/',
   RECOMMENDATIONS = 'recommendations',
   ERROR = '404',
   WRONG_PAGE = '*',

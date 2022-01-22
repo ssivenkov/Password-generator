@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
+import { PATH } from '../../../routes/routes';
 
 import { setErrorMessage } from 'store/actions/mainActions';
 import { AppRootStateType } from 'store/store';
@@ -22,6 +25,9 @@ export const ErrorAll = (): ReturnComponentType => {
         <div>
           <h1>Error:</h1>
           <h2>{textError}</h2>
+          <div>
+            <NavLink to={PATH.CREATE_PASSWORD}>Back to home</NavLink>
+          </div>
         </div>
       )}
     </div>

@@ -7,7 +7,7 @@ export const Error404 = (): ReturnComponentType => (
   <div>
     <div>Error 404</div>
     <div>
-      <NavLink to={PATH.MAIN}>Back to home</NavLink>
+      <NavLink to={PATH.CREATE_PASSWORD}>Back to home</NavLink>
     </div>
   </div>
 );
