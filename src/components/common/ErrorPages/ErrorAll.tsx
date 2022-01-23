@@ -5,13 +5,17 @@ import { NavLink } from 'react-router-dom';
 
 import { PATH } from '../../../routes/routes';
 
-import { setErrorMessage } from 'store/actions/mainActions';
+import { setErrorMessage } from 'store/actions/createPasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
 export const ErrorAll = (): ReturnComponentType => {
-  const error = useSelector<AppRootStateType, boolean>(state => state.main.error);
-  const textError = useSelector<AppRootStateType, string>(state => state.main.textError);
+  const error = useSelector<AppRootStateType, boolean>(
+    state => state.createPassword.error,
+  );
+  const textError = useSelector<AppRootStateType, string>(
+    state => state.createPassword.textError,
+  );
   const dispatch = useDispatch();
   const deleteMessageError = (): any => dispatch(setErrorMessage(false, ''));
   const time = 3000;

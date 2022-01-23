@@ -1,18 +1,18 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 
-import { MainActionsType } from './actions/mainActions';
-import { mainReducer } from './reducers/mainReducer';
+import { createPasswordActionsType } from './actions/createPasswordActions';
+import { createPasswordReducer } from './reducers/createPasswordReducer';
 
 const rootReducer = combineReducers({
-  main: mainReducer,
+  createPassword: createPasswordReducer,
 });
 
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 export type AppRootStateType = ReturnType<typeof rootReducer>;
-export type AppActionsType = MainActionsType;
+export type AppActionsType = createPasswordActionsType;
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
