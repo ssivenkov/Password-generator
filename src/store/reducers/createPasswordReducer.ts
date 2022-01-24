@@ -28,6 +28,14 @@ export const createPasswordReducer = (
       return { ...state, password: action.password };
     case CREATE_PASSWORD_ACTIONS.SET_LENGTH:
       return { ...state, length: action.length };
+    case CREATE_PASSWORD_ACTIONS.CHANGE_UPPERCASE_LETTERS:
+      return { ...state, uppercaseLetters: action.uppercaseLetters };
+    case CREATE_PASSWORD_ACTIONS.CHANGE_LOWERCASE_LETTERS:
+      return { ...state, lowercaseLetters: action.lowercaseLetters };
+    case CREATE_PASSWORD_ACTIONS.CHANGE_NUMBERS:
+      return { ...state, numbers: action.numbers };
+    case CREATE_PASSWORD_ACTIONS.CHANGE_SYMBOLS:
+      return { ...state, symbols: action.symbols };
     default:
       return state;
   }

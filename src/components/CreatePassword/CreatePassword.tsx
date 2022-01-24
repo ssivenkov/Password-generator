@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Checkbox } from '../common/Checkbox/Checkbox';
+
 import style from './CreatePassword.module.scss';
 
 import { Button } from 'components/common/Button/Button';
@@ -14,7 +16,13 @@ import {
   ZERO,
   TWO,
 } from 'constants/common';
-import { setPassword } from 'store/actions/createPasswordActions';
+import {
+  changeLowercaseLetters,
+  changeNumbers,
+  changeSymbols,
+  changeUppercaseLetters,
+  setPassword,
+} from 'store/actions/createPasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
@@ -49,6 +57,11 @@ export const CreatePassword = (): ReturnComponentType => {
     Number(passwordSymbols);
   const maxPortionLength = Math.floor(passwordLength / passwordSymbolsProportion);
 
+  /**
+   * adds a random number of random character types to the result variable.
+   * @param {Array} arr array of characters of the same type to form a fragment.
+   * @return {void} void.
+   * */
   const addPortion = (arr: Array<number | string>): void => {
     const maxPortion: Array<number | string> = [];
     // eslint-disable-next-line no-plusplus
@@ -110,11 +123,43 @@ export const CreatePassword = (): ReturnComponentType => {
       <div className={style.settingsContainer}>
         <div>Settings</div>
         <div>
-          <span>length: {passwordLength}; </span>
-          <span>uppercaseLetters: {`${passwordUppercaseLetters}`}; </span>
-          <span>lowercaseLetters: {`${passwordLowercaseLetters}`}; </span>
-          <span>numbers: {`${passwordNumbers}`}; </span>
-          <span>symbols: {`${passwordSymbols}`}; </span>
+          <span>length: {passwordLength}</span>
+          <div>
+            <Checkbox
+              onChangeChecked={() =>
+                dispatch(changeUppercaseLetters(!passwordUppercaseLetters))
+              }
+              checked={passwordUppercaseLetters}
+            >
+              Uppercase letters: {`${passwordUppercaseLetters}`}
+            </Checkbox>
+          </div>
+          <div>
+            <Checkbox
+              onChangeChecked={() =>
+                dispatch(changeLowercaseLetters(!passwordLowercaseLetters))
+              }
+              checked={passwordLowercaseLetters}
+            >
+              Lowercase letters: {`${passwordLowercaseLetters}`}
+            </Checkbox>
+          </div>
+          <div>
+            <Checkbox
+              onChangeChecked={() => dispatch(changeNumbers(!passwordNumbers))}
+              checked={passwordNumbers}
+            >
+              Numbers: {`${passwordNumbers}`}
+            </Checkbox>
+          </div>
+          <div>
+            <Checkbox
+              onChangeChecked={() => dispatch(changeSymbols(!passwordSymbols))}
+              checked={passwordSymbols}
+            >
+              Symbols: {`${passwordSymbols}`}
+            </Checkbox>
+          </div>
         </div>
       </div>
     </div>
