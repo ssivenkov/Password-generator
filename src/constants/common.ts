@@ -1,5 +1,5 @@
 export const EMPTY_STRING = '';
-export const ZERO_LENGTH = 0;
+export const FIRST_ELEMENT = 0;
 export const ZERO = 0;
 export const ONE = 1;
 export const TWO = 2;
@@ -10,6 +10,7 @@ export const SIX = 6;
 export const SEVEN = 7;
 export const EIGHT = 8;
 export const NINE = 9;
+export const HUNDRED = 100;
 
 export const numbersArr = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE];
 export const symbolsArr = [

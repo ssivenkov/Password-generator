@@ -1,4 +1,4 @@
-import { EMPTY_STRING } from 'constants/common';
+import { EIGHT, EMPTY_STRING } from 'constants/common';
 import {
   CREATE_PASSWORD_ACTIONS,
   createPasswordActionsType,
@@ -6,13 +6,14 @@ import {
 
 const initialCreatePasswordState = {
   password: EMPTY_STRING,
-  length: 12,
+  length: EIGHT,
   uppercaseLetters: false,
   lowercaseLetters: true,
   numbers: true,
   symbols: false,
   error: false,
   textError: EMPTY_STRING,
+  copied: false,
 };
 
 export type InitialCreatePasswordStateType = typeof initialCreatePasswordState;
@@ -36,6 +37,8 @@ export const createPasswordReducer = (
       return { ...state, numbers: action.numbers };
     case CREATE_PASSWORD_ACTIONS.CHANGE_SYMBOLS:
       return { ...state, symbols: action.symbols };
+    case CREATE_PASSWORD_ACTIONS.SET_COPIED_STATUS:
+      return { ...state, copied: action.status };
     default:
       return state;
   }

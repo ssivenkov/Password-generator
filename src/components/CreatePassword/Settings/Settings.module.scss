@@ -1,0 +1,11 @@
+.settingsContainer {
+    width: 100%;
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 7px;
+    background-color: #53bb53;
+    border: 2px solid var(--primary_half-medium);
+}

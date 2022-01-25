@@ -2,27 +2,20 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Checkbox } from '../common/Checkbox/Checkbox';
-
 import style from './CreatePassword.module.scss';
+import { Settings } from './Settings/Settings';
 
 import { Button } from 'components/common/Button/Button';
 import {
+  ZERO,
   ONE,
+  TWO,
+  uppercaseLettersArr,
   lowercaseLettersArr,
   numbersArr,
   symbolsArr,
-  uppercaseLettersArr,
-  ZERO,
-  TWO,
 } from 'constants/common';
-import {
-  changeLowercaseLetters,
-  changeNumbers,
-  changeSymbols,
-  changeUppercaseLetters,
-  setPassword,
-} from 'store/actions/createPasswordActions';
+import { setCopiedStatus, setPassword } from 'store/actions/createPasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
@@ -46,6 +39,9 @@ export const CreatePassword = (): ReturnComponentType => {
   );
   const password = useSelector<AppRootStateType, string>(
     state => state.createPassword.password,
+  );
+  const copiedStatus = useSelector<AppRootStateType, boolean>(
+    state => state.createPassword.copied,
   );
 
   let result = '';
@@ -89,7 +85,7 @@ export const CreatePassword = (): ReturnComponentType => {
 
   const generatePassword = (): string => {
     addPortion(signSetsArr[Math.floor(Math.random() * signSetsArr.length)]);
-    const checkNewPasswordLength = (): any => {
+    const checkNewPasswordLength = (): void => {
       addPortion(signSetsArr[Math.floor(Math.random() * signSetsArr.length)]);
       if (result.length < passwordLength) {
         checkNewPasswordLength();
@@ -101,8 +97,20 @@ export const CreatePassword = (): ReturnComponentType => {
   };
 
   const onPasswordGenerateClick = (): void => {
+    if (copiedStatus) dispatch(setCopiedStatus(false));
     const newPassword = generatePassword();
     dispatch(setPassword(newPassword));
+  };
+
+  const onCopyPasswordClick = (): void => {
+    navigator.clipboard
+      .writeText(password)
+      .then(() => {
+        dispatch(setCopiedStatus(true));
+      })
+      .catch(error => {
+        console.log(`Error copying password: ${error}`);
+      });
   };
 
   useEffect(() => {
@@ -119,49 +127,18 @@ export const CreatePassword = (): ReturnComponentType => {
       </div>
       <div className={style.buttonsContainer}>
         <Button onClick={() => onPasswordGenerateClick()}>Generate</Button>
+        <Button onClick={() => onCopyPasswordClick()}>
+          {copiedStatus ? <span>Copied to clipboard</span> : <span>Copy password</span>}
+        </Button>
       </div>
-      <div className={style.settingsContainer}>
-        <div>Settings</div>
-        <div>
-          <span>length: {passwordLength}</span>
-          <div>
-            <Checkbox
-              onChangeChecked={() =>
-                dispatch(changeUppercaseLetters(!passwordUppercaseLetters))
-              }
-              checked={passwordUppercaseLetters}
-            >
-              Uppercase letters: {`${passwordUppercaseLetters}`}
-            </Checkbox>
-          </div>
-          <div>
-            <Checkbox
-              onChangeChecked={() =>
-                dispatch(changeLowercaseLetters(!passwordLowercaseLetters))
-              }
-              checked={passwordLowercaseLetters}
-            >
-              Lowercase letters: {`${passwordLowercaseLetters}`}
-            </Checkbox>
-          </div>
-          <div>
-            <Checkbox
-              onChangeChecked={() => dispatch(changeNumbers(!passwordNumbers))}
-              checked={passwordNumbers}
-            >
-              Numbers: {`${passwordNumbers}`}
-            </Checkbox>
-          </div>
-          <div>
-            <Checkbox
-              onChangeChecked={() => dispatch(changeSymbols(!passwordSymbols))}
-              checked={passwordSymbols}
-            >
-              Symbols: {`${passwordSymbols}`}
-            </Checkbox>
-          </div>
-        </div>
-      </div>
+      <Settings
+        passwordLength={passwordLength}
+        passwordUppercaseLetters={passwordUppercaseLetters}
+        passwordLowercaseLetters={passwordLowercaseLetters}
+        passwordNumbers={passwordNumbers}
+        passwordSymbols={passwordSymbols}
+        copiedStatus={copiedStatus}
+      />
     </div>
   );
 };
