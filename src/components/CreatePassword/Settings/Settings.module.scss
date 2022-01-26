@@ -6,6 +6,48 @@
     align-items: center;
     padding: 15px;
     border-radius: 7px;
-    background-color: #53bb53;
+    background-color: var(--primary_dim);
     border: 2px solid var(--primary_half-medium);
+}
+
+.title {
+    margin: 9px 0;
+}
+
+.container {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+}
+
+.leftContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.descriptionText {
+    text-align: center;
+    margin-right: 8px;
+    margin-bottom: 1px;
+}
+
+.length {
+    min-width: 35px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+
+.rightContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkboxWrapper {
+    margin: 10px;
 }

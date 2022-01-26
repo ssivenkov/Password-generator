@@ -7,34 +7,17 @@
     width: 55px;
     height: 55px;
     margin: 15px 0;
-    font-size: 40px;
+    font-size: 35px;
     border-radius: 50%;
-    color: var(--contact);
+    color: var(--primary_dark);
     background-color: var(--primary);
     @include no-select;
-    &Icon {
-        /*position: absolute;
-        right: -1px;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        width: 55px;
-        height: 55px;
-        font-size: 40px;
-        border-radius: 50%;
-        color: var(--background_dark);
-        background-color: var(--primary);*/
-    }
 }
 
 .contactButton:hover {
     border: 2px solid var(--primary_light);
     box-shadow: 0 0 13px 1px var(--primary);
     text-shadow: 0 0 15px var(--primary), 0 0 5px var(--primary);
-    .contactButtonIcon {
-        /*background-color: var(--primary_light);
-        text-shadow: 0 0 15px var(--primary_light);*/
-    }
 }
 .contactButton:active {
     box-shadow: 0 0 9px 1px var(--primary_light);

@@ -7,10 +7,10 @@ import {
 const initialCreatePasswordState = {
   password: EMPTY_STRING,
   length: EIGHT,
-  uppercaseLetters: false,
+  uppercaseLetters: true,
   lowercaseLetters: true,
   numbers: true,
-  symbols: false,
+  symbols: true,
   error: false,
   textError: EMPTY_STRING,
   copied: false,

@@ -12,7 +12,6 @@ import {
   changeLowercaseLetters,
   changeNumbers,
   changeSymbols,
-  setCopiedStatus,
   setLength,
 } from 'store/actions/createPasswordActions';
 import { ReturnComponentType } from 'types/ReturnComponentType';
@@ -23,7 +22,6 @@ type SettingsType = {
   passwordLowercaseLetters: boolean;
   passwordNumbers: boolean;
   passwordSymbols: boolean;
-  copiedStatus: boolean;
 };
 
 export const Settings: FC<SettingsType> = ({
@@ -32,73 +30,70 @@ export const Settings: FC<SettingsType> = ({
   passwordLowercaseLetters,
   passwordNumbers,
   passwordSymbols,
-  copiedStatus,
 }): ReturnComponentType => {
   const dispatch = useDispatch();
 
   const onRangeUpdate = (value: Array<number>): void => {
-    dispatch(setCopiedStatus(false));
     dispatch(setLength(Math.round(Number(value[FIRST_ELEMENT]))));
   };
-
   const onUppercaseLettersChange = (): void => {
-    if (copiedStatus) dispatch(setCopiedStatus(false));
     dispatch(changeUppercaseLetters(!passwordUppercaseLetters));
   };
-
   const onLowercaseLettersChange = (): void => {
-    if (copiedStatus) dispatch(setCopiedStatus(false));
     dispatch(changeLowercaseLetters(!passwordLowercaseLetters));
   };
-
   const onNumbersChange = (): void => {
-    if (copiedStatus) dispatch(setCopiedStatus(false));
     dispatch(changeNumbers(!passwordNumbers));
   };
-
   const onSymbolsChange = (): void => {
-    if (copiedStatus) dispatch(setCopiedStatus(false));
     dispatch(changeSymbols(!passwordSymbols));
   };
 
   return (
     <div className={style.settingsContainer}>
-      <div>Settings</div>
-      <div>
-        <RangeSlider
-          startValue={EIGHT}
-          min={EIGHT}
-          max={HUNDRED}
-          step={ONE}
-          disabled={false}
-          onUpdate={onRangeUpdate}
-        />
-        <span>length: {passwordLength}</span>
-        <div>
-          <Checkbox
-            onChangeChecked={() => onUppercaseLettersChange()}
-            checked={passwordUppercaseLetters}
-          >
-            Uppercase letters: {`${passwordUppercaseLetters}`}
-          </Checkbox>
+      <div className={style.title}>Settings</div>
+      <div className={style.container}>
+        <div className={style.leftContainer}>
+          <div className={style.descriptionText}>Length</div>
+          <RangeSlider
+            startValue={EIGHT}
+            min={EIGHT}
+            max={HUNDRED}
+            step={ONE}
+            disabled={false}
+            onUpdate={onRangeUpdate}
+          />
+          <div className={style.length}>{passwordLength}</div>
         </div>
-        <div>
-          <Checkbox
-            onChangeChecked={() => onLowercaseLettersChange()}
-            checked={passwordLowercaseLetters}
-          >
-            Lowercase letters: {`${passwordLowercaseLetters}`}
-          </Checkbox>
-        </div>
-        <div>
-          <Checkbox onChangeChecked={() => onNumbersChange()} checked={passwordNumbers}>
-            Numbers: {`${passwordNumbers}`}
-          </Checkbox>
-        </div>
-        <div>
-          <Checkbox onChangeChecked={() => onSymbolsChange()} checked={passwordSymbols}>
-            Symbols: {`${passwordSymbols}`}
-          </Checkbox>
+        <div className={style.rightContainer}>
+          <div>
+            <div className={style.checkboxWrapper}>
+              <Checkbox
+                onChangeChecked={onUppercaseLettersChange}
+                checked={passwordUppercaseLetters}
+              >
+                Uppercase letters
+              </Checkbox>
+            </div>
+            <div className={style.checkboxWrapper}>
+              <Checkbox
+                onChangeChecked={onLowercaseLettersChange}
+                checked={passwordLowercaseLetters}
+              >
+                Lowercase letters
+              </Checkbox>
+            </div>
+            <div className={style.checkboxWrapper}>
+              <Checkbox onChangeChecked={onNumbersChange} checked={passwordNumbers}>
+                Numbers
+              </Checkbox>
+            </div>
+            <div className={style.checkboxWrapper}>
+              <Checkbox onChangeChecked={onSymbolsChange} checked={passwordSymbols}>
+                Symbols
+              </Checkbox>
+            </div>
+          </div>
         </div>
       </div>
     </div>

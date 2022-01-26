@@ -1,7 +1,7 @@
 .rangeSliderContainer {
     display: inline-block;
-    width: 100%;
-    margin-bottom: 20px;
+    width: 50%;
+    margin: 20px;
 }
 
 /* Nouislider styles */
@@ -9,12 +9,12 @@
     height: 6px !important;
     border: none !important;
     cursor: pointer !important;
-    background: rgba(33, 38, 143, .5) !important;
+    background: rgba(33, 112, 143, 0.5) !important;
     box-shadow: none !important;
 }
 
 .noUi-connect {
-    background: #21268F !important;
+    background: var(--primary_almost-medium) !important;
 }
 
 .noUi-tooltip {
@@ -24,12 +24,12 @@
 }
 
 .noUi-handle {
-    background: #fff !important;
+    background: var(--white) !important;
     border-radius: 50% !important;
     width: 20px !important;
     height: 20px !important;
     box-shadow: none !important;
-    border: 5px solid #21268F !important;
+    border: 5px solid var(--primary_half-medium) !important;
     right: -10px !important;
     top: -7px !important;
     cursor: grab !important;

@@ -34,7 +34,7 @@ export class RangeSlider extends React.Component<SuperDoubleRangePropsType, Stat
     const { min, max, step, disabled, onUpdate } = this.props;
     const { start } = this.state;
     return (
-      <span className="rangeSliderContainer">
+      <div className="rangeSliderContainer">
         <Nouislider
           range={{ min, max }}
           start={start}
@@ -43,18 +43,8 @@ export class RangeSlider extends React.Component<SuperDoubleRangePropsType, Stat
           onUpdate={onUpdate}
           animate={false}
           connect
-          tooltips={[
-            {
-              to(value: number) {
-                return Math.round(value);
-              },
-              from(value: number) {
-                return Math.round(value);
-              },
-            },
-          ]}
         />
-      </span>
+      </div>
     );
   }
 }

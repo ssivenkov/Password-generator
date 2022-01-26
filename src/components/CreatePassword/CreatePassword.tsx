@@ -9,7 +9,6 @@ import { Button } from 'components/common/Button/Button';
 import {
   ZERO,
   ONE,
-  TWO,
   uppercaseLettersArr,
   lowercaseLettersArr,
   numbersArr,
@@ -45,7 +44,7 @@ export const CreatePassword = (): ReturnComponentType => {
   );
 
   let result = '';
-  const maxSameSignTypeRepeatCount = TWO;
+  const maxSameSignTypeRepeatCount = ONE;
   const passwordSymbolsProportion =
     Number(passwordUppercaseLetters) +
     Number(passwordLowercaseLetters) +
@@ -96,7 +95,7 @@ export const CreatePassword = (): ReturnComponentType => {
     return result;
   };
 
-  const onPasswordGenerateClick = (): void => {
+  const passwordGenerate = (): void => {
     if (copiedStatus) dispatch(setCopiedStatus(false));
     const newPassword = generatePassword();
     dispatch(setPassword(newPassword));
@@ -114,8 +113,14 @@ export const CreatePassword = (): ReturnComponentType => {
   };
 
   useEffect(() => {
-    onPasswordGenerateClick();
-  }, []);
+    passwordGenerate();
+  }, [
+    passwordLength,
+    passwordUppercaseLetters,
+    passwordLowercaseLetters,
+    passwordNumbers,
+    passwordSymbols,
+  ]);
 
   return (
     <div className={style.container}>
@@ -126,7 +131,7 @@ export const CreatePassword = (): ReturnComponentType => {
         <div className={style.password}>{password}</div>
       </div>
       <div className={style.buttonsContainer}>
-        <Button onClick={() => onPasswordGenerateClick()}>Generate</Button>
+        <Button onClick={() => passwordGenerate()}>Generate</Button>
         <Button onClick={() => onCopyPasswordClick()}>
           {copiedStatus ? <span>Copied to clipboard</span> : <span>Copy password</span>}
         </Button>
@@ -137,7 +142,6 @@ export const CreatePassword = (): ReturnComponentType => {
         passwordLowercaseLetters={passwordLowercaseLetters}
         passwordNumbers={passwordNumbers}
         passwordSymbols={passwordSymbols}
-        copiedStatus={copiedStatus}
       />
     </div>
   );

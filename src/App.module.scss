@@ -5,7 +5,7 @@
 }
 
 body {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 // selected content
@@ -19,13 +19,13 @@ body {
 * {
     --primary_light: #84ff71;
     --primary: #41fe3a;
+    --primary_dim: #53bb53;
     --primary_medium: #44b425;
+    --primary_almost-medium: #368636;
     --primary_half-medium: #1f5f08;
-    --primary_dark: #143904;
-    --background_light: #252525;
-    --background: #0E1111;
-    --background_dark: #000;
-    --contact: #fff;
+    --primary_dark: #123b03;
+    --white: #fff;
+    --black: #000;
 }
 
 // width
