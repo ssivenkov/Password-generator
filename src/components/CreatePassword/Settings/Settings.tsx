@@ -17,6 +17,7 @@ import {
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
 type SettingsType = {
+  checkboxCount: number;
   passwordLength: number;
   passwordUppercaseLetters: boolean;
   passwordLowercaseLetters: boolean;
@@ -25,6 +26,7 @@ type SettingsType = {
 };
 
 export const Settings: FC<SettingsType> = ({
+  checkboxCount,
   passwordLength,
   passwordUppercaseLetters,
   passwordLowercaseLetters,
@@ -32,7 +34,7 @@ export const Settings: FC<SettingsType> = ({
   passwordSymbols,
 }): ReturnComponentType => {
   const dispatch = useDispatch();
-
+  const checkboxDisable = (checked: boolean): boolean => checkboxCount <= ONE && checked;
   const onRangeUpdate = (value: Array<number>): void => {
     dispatch(setLength(Math.round(Number(value[FIRST_ELEMENT]))));
   };
@@ -69,27 +71,37 @@ export const Settings: FC<SettingsType> = ({
           <div>
             <div className={style.checkboxWrapper}>
               <Checkbox
-                onChangeChecked={onUppercaseLettersChange}
+                onChangeChecked={() => onUppercaseLettersChange()}
                 checked={passwordUppercaseLetters}
+                disabled={checkboxDisable(passwordUppercaseLetters)}
               >
                 Uppercase letters
               </Checkbox>
             </div>
             <div className={style.checkboxWrapper}>
               <Checkbox
-                onChangeChecked={onLowercaseLettersChange}
+                onChangeChecked={() => onLowercaseLettersChange()}
                 checked={passwordLowercaseLetters}
+                disabled={checkboxDisable(passwordLowercaseLetters)}
               >
                 Lowercase letters
               </Checkbox>
             </div>
             <div className={style.checkboxWrapper}>
-              <Checkbox onChangeChecked={onNumbersChange} checked={passwordNumbers}>
+              <Checkbox
+                onChangeChecked={() => onNumbersChange()}
+                checked={passwordNumbers}
+                disabled={checkboxDisable(passwordNumbers)}
+              >
                 Numbers
               </Checkbox>
             </div>
             <div className={style.checkboxWrapper}>
-              <Checkbox onChangeChecked={onSymbolsChange} checked={passwordSymbols}>
+              <Checkbox
+                onChangeChecked={() => onSymbolsChange()}
+                checked={passwordSymbols}
+                disabled={checkboxDisable(passwordSymbols)}
+              >
                 Symbols
               </Checkbox>
             </div>

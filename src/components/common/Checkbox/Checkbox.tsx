@@ -10,6 +10,7 @@ type DefaultInputPropsType = DetailedHTMLProps<
 >;
 
 type CheckboxPropsType = DefaultInputPropsType & {
+  disabled: boolean;
   onChangeChecked: (checked: boolean) => void;
 };
 
@@ -19,6 +20,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
   className,
   children,
   checked,
+  disabled,
 }): ReturnComponentType => {
   const onChangeCallback = (e: ChangeEvent<HTMLInputElement>): void => {
     if (onChange) {
@@ -39,6 +41,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
         onChange={onChangeCallback}
         className={finalInputClassName}
         checked={checked}
+        disabled={disabled}
       />
       {children && <span>{children}</span>}
     </label>

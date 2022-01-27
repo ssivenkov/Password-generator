@@ -14,6 +14,7 @@ const initialCreatePasswordState = {
   error: false,
   textError: EMPTY_STRING,
   copied: false,
+  checkboxCount: 0,
 };
 
 export type InitialCreatePasswordStateType = typeof initialCreatePasswordState;
@@ -39,6 +40,8 @@ export const createPasswordReducer = (
       return { ...state, symbols: action.symbols };
     case CREATE_PASSWORD_ACTIONS.SET_COPIED_STATUS:
       return { ...state, copied: action.status };
+    case CREATE_PASSWORD_ACTIONS.SET_CHECKBOX_COUNT:
+      return { ...state, checkboxCount: action.count };
     default:
       return state;
   }

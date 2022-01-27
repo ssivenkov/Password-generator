@@ -14,13 +14,20 @@ import {
   numbersArr,
   symbolsArr,
 } from 'constants/common';
-import { setCopiedStatus, setPassword } from 'store/actions/createPasswordActions';
+import {
+  setCheckboxCount,
+  setCopiedStatus,
+  setPassword,
+} from 'store/actions/createPasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
 export const CreatePassword = (): ReturnComponentType => {
   const dispatch = useDispatch();
 
+  const checkboxCount = useSelector<AppRootStateType, number>(
+    state => state.createPassword.checkboxCount,
+  );
   const passwordLength = useSelector<AppRootStateType, number>(
     state => state.createPassword.length,
   );
@@ -81,6 +88,7 @@ export const CreatePassword = (): ReturnComponentType => {
     if (passwordSymbols) signSetsArr.push(symbolsArr);
   };
   fillingSignSetsArr();
+  dispatch(setCheckboxCount(signSetsArr.length));
 
   const generatePassword = (): string => {
     addPortion(signSetsArr[Math.floor(Math.random() * signSetsArr.length)]);
@@ -137,6 +145,7 @@ export const CreatePassword = (): ReturnComponentType => {
         </Button>
       </div>
       <Settings
+        checkboxCount={checkboxCount}
         passwordLength={passwordLength}
         passwordUppercaseLetters={passwordUppercaseLetters}
         passwordLowercaseLetters={passwordLowercaseLetters}

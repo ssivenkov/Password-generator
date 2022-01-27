@@ -1,11 +1,13 @@
-.globalContainer {
-    min-height: 100vh;
-    background-image: linear-gradient(0deg, rgb(139, 193, 116) 5%, rgb(199, 255, 184) 92%);
-    background-attachment: fixed;
-}
-
 body {
     font-size: 18px;
+}
+
+.globalContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(0deg, rgb(139, 193, 116) 5%, rgb(199, 255, 184) 92%);
+    background-attachment: fixed;
 }
 
 // selected content

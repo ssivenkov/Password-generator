@@ -7,6 +7,7 @@ export enum CREATE_PASSWORD_ACTIONS {
   CHANGE_NUMBERS = 'createPasswordReducer/CHANGE-NUMBERS',
   CHANGE_SYMBOLS = 'createPasswordReducer/CHANGE-SYMBOLS',
   SET_COPIED_STATUS = 'createPasswordReducer/SET-COPIED-STATUS',
+  SET_CHECKBOX_COUNT = 'createPasswordReducer/SET-CHECKBOX-COUNT',
 }
 
 export type createPasswordActionsType =
@@ -17,7 +18,8 @@ export type createPasswordActionsType =
   | ReturnType<typeof changeLowercaseLetters>
   | ReturnType<typeof changeNumbers>
   | ReturnType<typeof changeSymbols>
-  | ReturnType<typeof setCopiedStatus>;
+  | ReturnType<typeof setCopiedStatus>
+  | ReturnType<typeof setCheckboxCount>;
 
 export const setErrorMessage = (error: boolean, textError: string) =>
   ({ type: CREATE_PASSWORD_ACTIONS.SET_ERROR_MESSAGE, error, textError } as const);
@@ -42,3 +44,6 @@ export const changeSymbols = (symbols: boolean) =>
 
 export const setCopiedStatus = (status: boolean) =>
   ({ type: CREATE_PASSWORD_ACTIONS.SET_COPIED_STATUS, status } as const);
+
+export const setCheckboxCount = (count: number) =>
+  ({ type: CREATE_PASSWORD_ACTIONS.SET_CHECKBOX_COUNT, count } as const);
