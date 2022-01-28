@@ -2,7 +2,7 @@ import { EIGHT, EMPTY_STRING } from 'constants/common';
 import {
   CREATE_PASSWORD_ACTIONS,
   createPasswordActionsType,
-} from 'store/actions/createPasswordActions';
+} from 'store/actions/CreatePasswordActions';
 
 const initialCreatePasswordState = {
   password: EMPTY_STRING,

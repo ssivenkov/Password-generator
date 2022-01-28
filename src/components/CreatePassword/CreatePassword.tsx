@@ -18,7 +18,7 @@ import {
   setCheckboxCount,
   setCopiedStatus,
   setPassword,
-} from 'store/actions/createPasswordActions';
+} from 'store/actions/CreatePasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 

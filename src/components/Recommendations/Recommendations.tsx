@@ -59,5 +59,14 @@ export const Recommendations = (): ReturnComponentType => (
         password is eight million times harder to guess than a 12-character password.
       </div>
     </div>
+
+    <div className={style.contentContainer}>
+      <div>
+        To store passwords, we recommend creating a text file in which you can write login
+        data to the desired you sites. Then put this file in an archive and protect the
+        archive with a password. Thus, you only need to remember one password so that only
+        you can access the login data for the sites you need.
+      </div>
+    </div>
   </div>
 );

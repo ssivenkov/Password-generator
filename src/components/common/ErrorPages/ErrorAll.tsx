@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import { PATH } from '../../../routes/routes';
 
-import { setErrorMessage } from 'store/actions/createPasswordActions';
+import { setErrorMessage } from 'store/actions/CreatePasswordActions';
 import { AppRootStateType } from 'store/store';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 

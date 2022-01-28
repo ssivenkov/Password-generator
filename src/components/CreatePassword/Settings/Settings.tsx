@@ -13,7 +13,7 @@ import {
   changeNumbers,
   changeSymbols,
   setLength,
-} from 'store/actions/createPasswordActions';
+} from 'store/actions/CreatePasswordActions';
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
 type SettingsType = {

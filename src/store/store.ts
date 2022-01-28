@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 
-import { createPasswordActionsType } from './actions/createPasswordActions';
-import { createPasswordReducer } from './reducers/createPasswordReducer';
+import { createPasswordActionsType } from './actions/CreatePasswordActions';
+import { createPasswordReducer } from './reducers/CreatePasswordReducer';
 
 const rootReducer = combineReducers({
   createPassword: createPasswordReducer,
