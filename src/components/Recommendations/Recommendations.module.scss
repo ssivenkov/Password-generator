@@ -15,6 +15,7 @@
     padding: 15px 20px;
     margin: 15px;
     line-height: 1.35;
+    text-align: justify;
     word-break: break-word;
     background-color: var(--white);
     border-radius: 7px;
@@ -23,5 +24,17 @@
 .question {
     margin: 0 10px 10px;
     font-weight: 700;
+    text-align: center;
     word-break: break-word;
+}
+
+@media (pointer:coarse) {
+    .container {
+        padding: 0 15px;
+        margin: 20px 0;
+    }
+
+    .contentContainer {
+        margin: 10px;
+    }
 }

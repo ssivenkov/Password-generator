@@ -6,6 +6,18 @@
     background-color: var(--primary);
 }
 
-.baseButton:hover {
-    box-shadow: 0 0 6px 3px var(--primary_medium);
+@media (pointer:coarse) {
+    .baseButton {
+        padding: 12px 14px;
+    }
+
+    .baseButton:active {
+        box-shadow: 0 0 6px 3px var(--primary_medium);
+    }
+}
+
+@media (pointer:fine) {
+    .baseButton:hover {
+        box-shadow: 0 0 6px 3px var(--primary_medium);
+    }
 }

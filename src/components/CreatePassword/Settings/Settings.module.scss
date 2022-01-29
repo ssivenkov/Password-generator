@@ -52,3 +52,15 @@
 .checkboxWrapper {
     margin: 10px;
 }
+
+@media (pointer:coarse) {
+    .settingsContainer {
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        grid-template: none;
+    }
+}

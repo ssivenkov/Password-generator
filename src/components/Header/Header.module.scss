@@ -28,3 +28,18 @@
     color: #000;
     background-color: var(--primary_light);
 }
+
+@media (pointer:coarse) {
+    .container {
+        height: 60px;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .item a {
+        font-size: 18px;
+        padding: 0 10px;
+    }
+}

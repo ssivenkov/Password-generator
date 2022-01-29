@@ -14,6 +14,10 @@ export const Footer = (): ReturnComponentType => (
       />
       <ContactButton link="https://t.me/sergei_sivenkov" iconClass="fa-telegram" />
       <ContactButton link="https://github.com/ssivenkov" iconClass="fa-github" />
+      <ContactButton
+        link="https://join.skype.com/invite/cdkkYBX1uutB"
+        iconClass="fa-skype"
+      />
     </div>
   </div>
 );
