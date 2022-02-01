@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { ThemeChangeBar } from '../ThemeChangeBar/ThemeChangeBar';
+
 import style from './CreatePassword.module.scss';
 import { Settings } from './Settings/Settings';
 
@@ -152,6 +154,7 @@ export const CreatePassword = (): ReturnComponentType => {
         passwordNumbers={passwordNumbers}
         passwordSymbols={passwordSymbols}
       />
+      <ThemeChangeBar />
     </div>
   );
 };

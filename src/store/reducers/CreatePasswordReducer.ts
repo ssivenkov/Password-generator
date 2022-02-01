@@ -4,7 +4,7 @@ import {
   createPasswordActionsType,
 } from 'store/actions/CreatePasswordActions';
 
-const initialCreatePasswordState = {
+const initialState = {
   password: EMPTY_STRING,
   length: EIGHT,
   uppercaseLetters: true,
@@ -17,10 +17,10 @@ const initialCreatePasswordState = {
   checkboxCount: 0,
 };
 
-export type InitialCreatePasswordStateType = typeof initialCreatePasswordState;
+export type InitialCreatePasswordStateType = typeof initialState;
 
 export const createPasswordReducer = (
-  state: InitialCreatePasswordStateType = initialCreatePasswordState,
+  state: InitialCreatePasswordStateType = initialState,
   action: createPasswordActionsType,
 ): InitialCreatePasswordStateType => {
   switch (action.type) {

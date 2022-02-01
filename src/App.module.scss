@@ -6,7 +6,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(0deg, rgb(139, 193, 116) 5%, rgb(199, 255, 184) 92%);
+    background-image: linear-gradient(0deg, var(--background1) 5%, var(--background2) 92%);
     background-attachment: fixed;
 }
 
@@ -17,8 +17,8 @@ body {
     text-shadow: none;
 }
 
-// colors
-* {
+// initial colors
+html {
     --primary_light: #84ff71;
     --primary: #41fe3a;
     --primary_dim: #53bb53;
@@ -26,6 +26,8 @@ body {
     --primary_almost-medium: #368636;
     --primary_half-medium: #1f5f08;
     --primary_dark: #123b03;
+    --background1: #8BC174;
+    --background2: #C7FFB8;
     --white: #fff;
     --black: #000;
 }

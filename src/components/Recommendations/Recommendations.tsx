@@ -1,8 +1,12 @@
+import { memo } from 'react';
+
+import { ThemeChangeBar } from '../ThemeChangeBar/ThemeChangeBar';
+
 import style from './Recommendations.module.scss';
 
 import { ReturnComponentType } from 'types/ReturnComponentType';
 
-export const Recommendations = (): ReturnComponentType => (
+const RecommendationsComponent = (): ReturnComponentType => (
   <div className={style.container}>
     <div className={style.contentContainer}>
       <div>
@@ -68,5 +72,9 @@ export const Recommendations = (): ReturnComponentType => (
         you can access the login data for the sites you need.
       </div>
     </div>
+
+    <ThemeChangeBar />
   </div>
 );
+
+export const Recommendations = memo(RecommendationsComponent);
