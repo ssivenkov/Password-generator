@@ -1,9 +1,11 @@
 import React, { ChangeEvent } from 'react';
 
+import { JSXElement } from 'types/commonTypes';
+
 import style from './Checkbox.module.scss';
 import { CheckboxPropsType } from './types';
 
-export const Checkbox = (props: CheckboxPropsType) => {
+export const Checkbox = (props: CheckboxPropsType): JSXElement => {
   const { onChange, onChangeChecked, className, children, checked, isDisabled } = props;
 
   const onChangeCallback = (event: ChangeEvent<HTMLInputElement>): void => {

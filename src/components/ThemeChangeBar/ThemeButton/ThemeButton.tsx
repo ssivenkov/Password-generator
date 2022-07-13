@@ -1,7 +1,9 @@
+import { JSXElement } from 'types/commonTypes';
+
 import style from './ThemeButton.module.scss';
 import { ThemeButtonPropsType } from './types';
 
-export const ThemeButton = (props: ThemeButtonPropsType) => {
+export const ThemeButton = (props: ThemeButtonPropsType): JSXElement => {
   const { theme, onClick } = props;
 
   return (

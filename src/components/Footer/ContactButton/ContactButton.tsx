@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { JSXElement } from 'types/commonTypes';
+
 import s from './ContactButton.module.scss';
 import { ContactButtonPropsType } from './types';
 
-export const ContactButton = (props: ContactButtonPropsType) => {
+export const ContactButton = (props: ContactButtonPropsType): JSXElement => {
   const { link, iconClass } = props;
 
   return (

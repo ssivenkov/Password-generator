@@ -10,11 +10,12 @@ import {
   changeSymbols,
   setLength,
 } from 'store/actions/CreatePasswordActions';
+import { JSXElement } from 'types/commonTypes';
 
 import style from './Settings.module.scss';
 import { SettingsPropsType } from './types';
 
-export const Settings = (props: SettingsPropsType) => {
+export const Settings = (props: SettingsPropsType): JSXElement => {
   const {
     checkboxCount,
     passwordLength,

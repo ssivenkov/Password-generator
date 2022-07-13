@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { JSXElement } from 'types/commonTypes';
+
 import style from './Button.module.scss';
 import { ButtonPropsType } from './types';
 
-export const Button = (props: ButtonPropsType) => {
+export const Button = (props: ButtonPropsType): JSXElement => {
   const { children, className, onClick, disabled, id } = props;
 
   return (
