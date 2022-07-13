@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
-
 import { PATH } from 'routes/routes';
-import { ReturnComponentType } from 'types/ReturnComponentType';
+import { JSXElement } from 'types/commonTypes';
 
-export const Error404 = (): ReturnComponentType => (
+export const Error404 = (): JSXElement => (
   <div>
     <div>Error 404</div>
     <div>

@@ -1,22 +1,21 @@
 import React from 'react';
 
-import { Navigate, Route, Routes } from 'react-router-dom';
-
-import style from './RoutesContainer.module.scss';
-
 import { Error404 } from 'components/common/ErrorPages/Error404';
 import { CreatePassword } from 'components/CreatePassword/CreatePassword';
 import { Recommendations } from 'components/Recommendations/Recommendations';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { PATH } from 'routes/routes';
-import { ReturnComponentType } from 'types/ReturnComponentType';
+import { JSXElement } from 'types/commonTypes';
 
-export const RoutesContainer = (): ReturnComponentType => (
+import style from './RoutesContainer.module.scss';
+
+export const RoutesContainer = (): JSXElement => (
   <div className={style.container}>
     <Routes>
-      <Route path={PATH.CREATE_PASSWORD} element={<CreatePassword />} />
-      <Route path={PATH.RECOMMENDATIONS} element={<Recommendations />} />
-      <Route path={PATH.ERROR} element={<Error404 />} />
-      <Route path={PATH.WRONG_PAGE} element={<Navigate to={PATH.ERROR} />} />
+      <Route element={<CreatePassword />} path={PATH.CREATE_PASSWORD} />
+      <Route element={<Recommendations />} path={PATH.RECOMMENDATIONS} />
+      <Route element={<Error404 />} path={PATH.ERROR} />
+      <Route element={<Navigate to={PATH.ERROR} />} path={PATH.WRONG_PAGE} />
     </Routes>
   </div>
 );

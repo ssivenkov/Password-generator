@@ -33,16 +33,17 @@ export class RangeSlider extends React.Component<SuperDoubleRangePropsType, Stat
   render(): React.ReactElement {
     const { min, max, step, disabled, onUpdate } = this.props;
     const { start } = this.state;
+
     return (
-      <div className="rangeSliderContainer">
+      <div className='rangeSliderContainer'>
         <Nouislider
+          animate={false}
+          connect
+          disabled={disabled}
+          onUpdate={onUpdate}
           range={{ min, max }}
           start={start}
           step={step}
-          disabled={disabled}
-          onUpdate={onUpdate}
-          animate={false}
-          connect
         />
       </div>
     );

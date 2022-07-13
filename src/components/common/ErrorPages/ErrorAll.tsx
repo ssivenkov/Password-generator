@@ -2,23 +2,24 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-
-import { PATH } from '../../../routes/routes';
-
+import { PATH } from 'routes/routes';
 import { setErrorMessage } from 'store/actions/CreatePasswordActions';
 import { AppRootStateType } from 'store/store';
-import { ReturnComponentType } from 'types/ReturnComponentType';
+import { JSXElement } from 'types/commonTypes';
 
-export const ErrorAll = (): ReturnComponentType => {
+export const ErrorAll = (): JSXElement => {
   const error = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.error,
+    (state) => state.createPassword.error,
   );
   const textError = useSelector<AppRootStateType, string>(
-    state => state.createPassword.textError,
+    (state) => state.createPassword.textError,
   );
   const dispatch = useDispatch();
-  const deleteMessageError = (): any => dispatch(setErrorMessage(false, ''));
+  const deleteMessageError = () => {
+    dispatch(setErrorMessage(false, ''));
+  };
   const time = 3000;
+
   useEffect(() => {
     setTimeout(deleteMessageError, time);
   }, [error]);

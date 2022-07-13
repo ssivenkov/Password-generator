@@ -2,15 +2,13 @@ import React, { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'reac
 
 import style from './Checkbox.module.scss';
 
-import { ReturnComponentType } from 'types/ReturnComponentType';
-
 type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >;
 
 type CheckboxPropsType = DefaultInputPropsType & {
-  disabled: boolean;
+  isDisabled: boolean;
   onChangeChecked: (checked: boolean) => void;
 };
 
@@ -20,28 +18,27 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
   className,
   children,
   checked,
-  disabled,
-}): ReturnComponentType => {
-  const onChangeCallback = (e: ChangeEvent<HTMLInputElement>): void => {
+  isDisabled,
+}) => {
+  const onChangeCallback = (event: ChangeEvent<HTMLInputElement>): void => {
     if (onChange) {
-      onChange(e);
+      onChange(event);
     }
     if (onChangeChecked) {
-      onChangeChecked(e.currentTarget.checked);
+      onChangeChecked(event.currentTarget.checked);
     }
   };
 
   const finalInputClassName = `${style.checkbox} ${className || ''}`;
 
   return (
-    // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label className={style.labelContainer}>
       <input
-        type="checkbox"
-        onChange={onChangeCallback}
-        className={finalInputClassName}
         checked={checked}
-        disabled={disabled}
+        className={finalInputClassName}
+        isDisabled={isDisabled}
+        onChange={onChangeCallback}
+        type='checkbox'
       />
       {children && <span>{children}</span>}
     </label>

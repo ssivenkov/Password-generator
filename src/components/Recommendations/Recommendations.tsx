@@ -4,9 +4,7 @@ import { ThemeChangeBar } from '../ThemeChangeBar/ThemeChangeBar';
 
 import style from './Recommendations.module.scss';
 
-import { ReturnComponentType } from 'types/ReturnComponentType';
-
-const RecommendationsComponent = (): ReturnComponentType => (
+const RecommendationsComponent = () => (
   <div className={style.container}>
     <div className={style.contentContainer}>
       <div>

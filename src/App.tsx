@@ -1,18 +1,3 @@
-import React, { FC } from 'react';
-
-import 'Null.module.scss';
-import {
-  blueThemeColors,
-  greenThemeColors,
-  redThemeColors,
-  yellowThemeColors,
-} from './components/ThemeChangeBar/Colors/Colors';
-
-import style from 'App.module.scss';
-import { ErrorAll } from 'components/common/ErrorPages/ErrorAll';
-import { Footer } from 'components/Footer/Footer';
-import { Header } from 'components/Header/Header';
-import { RoutesContainer } from 'components/RoutesContainer/RoutesContainer';
 import {
   BLUE_THEME,
   EIGHTH_ELEMENT,
@@ -28,27 +13,50 @@ import {
   THIRD_ELEMENT,
   YELLOW_THEME,
 } from 'constants/common';
-import { ReturnComponentType } from 'types/ReturnComponentType';
+
+import React from 'react';
+
+import 'Null.module.scss';
+import style from 'App.module.scss';
+import { ErrorAll } from 'components/common/ErrorPages/ErrorAll';
+import { Footer } from 'components/Footer/Footer';
+import { Header } from 'components/Header/Header';
+import { RoutesContainer } from 'components/RoutesContainer/RoutesContainer';
+
+import {
+  blueThemeColors,
+  greenThemeColors,
+  redThemeColors,
+  yellowThemeColors,
+} from './components/ThemeChangeBar/Colors/Colors';
+import { JSXElement } from './types/commonTypes';
 
 export const changeTheme = (userTheme: string, themeColors: Array<string>): void => {
   localStorage.setItem('userTheme', userTheme);
   const doc = document.querySelector('html');
-  doc!.style.setProperty('--primary_light', themeColors[FIRST_ELEMENT]);
-  doc!.style.setProperty('--primary', themeColors[SECOND_ELEMENT]);
-  doc!.style.setProperty('--primary_dim', themeColors[THIRD_ELEMENT]);
-  doc!.style.setProperty('--primary_medium', themeColors[FOURTH_ELEMENT]);
-  doc!.style.setProperty('--primary_almost-medium', themeColors[FIFTH_ELEMENT]);
-  doc!.style.setProperty('--primary_half-medium', themeColors[SIXTH_ELEMENT]);
-  doc!.style.setProperty('--primary_dark', themeColors[SEVENTH_ELEMENT]);
-  doc!.style.setProperty('--background1', themeColors[EIGHTH_ELEMENT]);
-  doc!.style.setProperty('--background2', themeColors[NINTH_ELEMENT]);
+
+  if (doc) {
+    doc.style.setProperty('--primary_light', themeColors[FIRST_ELEMENT]);
+    doc.style.setProperty('--primary', themeColors[SECOND_ELEMENT]);
+    doc.style.setProperty('--primary_dim', themeColors[THIRD_ELEMENT]);
+    doc.style.setProperty('--primary_medium', themeColors[FOURTH_ELEMENT]);
+    doc.style.setProperty('--primary_almost-medium', themeColors[FIFTH_ELEMENT]);
+    doc.style.setProperty('--primary_half-medium', themeColors[SIXTH_ELEMENT]);
+    doc.style.setProperty('--primary_dark', themeColors[SEVENTH_ELEMENT]);
+    doc.style.setProperty('--background1', themeColors[EIGHTH_ELEMENT]);
+    doc.style.setProperty('--background2', themeColors[NINTH_ELEMENT]);
+  }
 };
 
-export const App: FC = (): ReturnComponentType => {
+export const App = (): JSXElement => {
   if (localStorage.getItem('userTheme')) {
     let localTheme = GREEN_THEME;
-    localTheme = localStorage.getItem('userTheme')!;
+    const userTheme = localStorage.getItem('userTheme') ?? false;
+
+    if (userTheme) localTheme = userTheme;
+
     let themeColorsPack = greenThemeColors;
+
     switch (localTheme) {
       case RED_THEME:
         themeColorsPack = redThemeColors;

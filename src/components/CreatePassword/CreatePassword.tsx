@@ -1,13 +1,3 @@
-import { useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-
-import { ThemeChangeBar } from '../ThemeChangeBar/ThemeChangeBar';
-
-import style from './CreatePassword.module.scss';
-import { Settings } from './Settings/Settings';
-
-import { Button } from 'components/common/Button/Button';
 import {
   ZERO,
   ONE,
@@ -16,40 +6,50 @@ import {
   numbersArr,
   symbolsArr,
 } from 'constants/common';
+
+import { useEffect } from 'react';
+
+import { Button } from 'components/common/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setCheckboxCount,
   setCopiedStatus,
   setPassword,
 } from 'store/actions/CreatePasswordActions';
 import { AppRootStateType } from 'store/store';
-import { ReturnComponentType } from 'types/ReturnComponentType';
+import { JSXElement } from 'types/commonTypes';
 
-export const CreatePassword = (): ReturnComponentType => {
+import { ThemeChangeBar } from '../ThemeChangeBar/ThemeChangeBar';
+
+import style from './CreatePassword.module.scss';
+import { Settings } from './Settings/Settings';
+
+export const CreatePassword = (): JSXElement => {
   const dispatch = useDispatch();
 
   const checkboxCount = useSelector<AppRootStateType, number>(
-    state => state.createPassword.checkboxCount,
+    (state) => state.createPassword.checkboxCount,
   );
   const passwordLength = useSelector<AppRootStateType, number>(
-    state => state.createPassword.length,
+    (state) => state.createPassword.length,
   );
   const passwordUppercaseLetters = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.uppercaseLetters,
+    (state) => state.createPassword.uppercaseLetters,
   );
   const passwordLowercaseLetters = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.lowercaseLetters,
+    (state) => state.createPassword.lowercaseLetters,
   );
   const passwordNumbers = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.numbers,
+    (state) => state.createPassword.numbers,
   );
   const passwordSymbols = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.symbols,
+    (state) => state.createPassword.symbols,
   );
   const password = useSelector<AppRootStateType, string>(
-    state => state.createPassword.password,
+    (state) => state.createPassword.password,
   );
   const copiedStatus = useSelector<AppRootStateType, boolean>(
-    state => state.createPassword.copied,
+    (state) => state.createPassword.copied,
   );
 
   let result = '';
@@ -68,6 +68,7 @@ export const CreatePassword = (): ReturnComponentType => {
    * */
   const addPortion = (arr: Array<number | string>): void => {
     const maxPortion: Array<number | string> = [];
+
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < maxPortionLength; i++) {
       maxPortion.push(arr[Math.floor(Math.random() * arr.length)]);
@@ -75,6 +76,7 @@ export const CreatePassword = (): ReturnComponentType => {
     const portion: Array<number | string> = [];
     const randomMaxPortionLength =
       Math.floor(Math.random() * maxSameSignTypeRepeatCount) + ONE;
+
     // eslint-disable-next-line no-plusplus
     for (let k = 0; k < randomMaxPortionLength; k++) {
       portion.push(maxPortion[Math.floor(Math.random() * maxPortion.length)]);
@@ -82,13 +84,14 @@ export const CreatePassword = (): ReturnComponentType => {
     result += portion.join('');
   };
 
-  const signSetsArr: Array<any> = [];
+  const signSetsArr: Array<string[] | number[]> = [];
   const fillingSignSetsArr = (): void => {
     if (passwordUppercaseLetters) signSetsArr.push(uppercaseLettersArr);
     if (passwordLowercaseLetters) signSetsArr.push(lowercaseLettersArr);
     if (passwordNumbers) signSetsArr.push(numbersArr);
     if (passwordSymbols) signSetsArr.push(symbolsArr);
   };
+
   fillingSignSetsArr();
   dispatch(setCheckboxCount(signSetsArr.length));
 
@@ -100,26 +103,24 @@ export const CreatePassword = (): ReturnComponentType => {
         checkNewPasswordLength();
       }
     };
+
     checkNewPasswordLength();
     result = result.slice(ZERO, passwordLength);
+
     return result;
   };
 
   const passwordGenerate = (): void => {
     if (copiedStatus) dispatch(setCopiedStatus(false));
     const newPassword = generatePassword();
+
     dispatch(setPassword(newPassword));
   };
 
   const onCopyPasswordClick = (): void => {
-    navigator.clipboard
-      .writeText(password)
-      .then(() => {
-        dispatch(setCopiedStatus(true));
-      })
-      .catch(error => {
-        console.log(`Error copying password: ${error}`);
-      });
+    navigator.clipboard.writeText(password).then(() => {
+      dispatch(setCopiedStatus(true));
+    });
   };
 
   useEffect(() => {
@@ -148,11 +149,11 @@ export const CreatePassword = (): ReturnComponentType => {
       </div>
       <Settings
         checkboxCount={checkboxCount}
+        isPasswordLowercaseLetters={passwordLowercaseLetters}
+        isPasswordNumbers={passwordNumbers}
+        isPasswordSymbols={passwordSymbols}
+        isPasswordUppercaseLetters={passwordUppercaseLetters}
         passwordLength={passwordLength}
-        passwordUppercaseLetters={passwordUppercaseLetters}
-        passwordLowercaseLetters={passwordLowercaseLetters}
-        passwordNumbers={passwordNumbers}
-        passwordSymbols={passwordSymbols}
       />
       <ThemeChangeBar />
     </div>

@@ -8,7 +8,7 @@ type ContactButtonType = {
 };
 
 export const ContactButton: React.FC<ContactButtonType> = ({ link, iconClass }) => (
-  <a className={s.contactButton} href={link} target="_blank" rel="noreferrer">
+  <a className={s.contactButton} href={link} rel='noreferrer' target='_blank'>
     <span className={`${s.contactButtonIcon} fab ${iconClass}`} />
   </a>
 );

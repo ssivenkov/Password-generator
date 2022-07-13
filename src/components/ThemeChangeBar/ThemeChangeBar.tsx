@@ -1,3 +1,8 @@
+import { RED_THEME, YELLOW_THEME, GREEN_THEME, BLUE_THEME } from 'constants/common';
+
+import { changeTheme } from 'App';
+import { JSXElement } from 'types/commonTypes';
+
 import {
   blueThemeColors,
   greenThemeColors,
@@ -7,11 +12,7 @@ import {
 import { ThemeButton } from './ThemeButton/ThemeButton';
 import style from './ThemeChangeBar.module.scss';
 
-import { changeTheme } from 'App';
-import { RED_THEME, YELLOW_THEME, GREEN_THEME, BLUE_THEME } from 'constants/common';
-import { ReturnComponentType } from 'types/ReturnComponentType';
-
-export const ThemeChangeBar = (): ReturnComponentType => (
+export const ThemeChangeBar = (): JSXElement => (
   <div className={style.container}>
     <ThemeButton
       onClick={() => changeTheme(RED_THEME, redThemeColors)}

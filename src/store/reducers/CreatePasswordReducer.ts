@@ -1,4 +1,5 @@
 import { EIGHT, EMPTY_STRING } from 'constants/common';
+
 import {
   CREATE_PASSWORD_ACTIONS,
   createPasswordActionsType,
