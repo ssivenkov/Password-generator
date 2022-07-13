@@ -1,20 +1,14 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
-
 import style from './ThemeButton.module.scss';
+import { ThemeButtonPropsType } from './types';
 
-type DefaultButtonPropsType = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
+export const ThemeButton = (props: ThemeButtonPropsType) => {
+  const { theme, onClick } = props;
 
-export type ThemeButtonType = DefaultButtonPropsType & {
-  theme: string;
+  return (
+    <button
+      className={`${style.baseButton} ${style[theme]}`}
+      onClick={onClick}
+      type='button'
+    />
+  );
 };
-
-export const ThemeButton: FC<ThemeButtonType> = ({ theme, onClick }) => (
-  <button
-    className={`${style.baseButton} ${style[theme]}`}
-    onClick={onClick}
-    type='button'
-  />
-);

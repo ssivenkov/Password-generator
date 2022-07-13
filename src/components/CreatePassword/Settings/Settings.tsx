@@ -1,7 +1,5 @@
 import { FIRST_ELEMENT, ONE, EIGHT, HUNDRED } from 'constants/common';
 
-import { FC } from 'react';
-
 import { Checkbox } from 'components/common/Checkbox/Checkbox';
 import { RangeSlider } from 'components/common/RangeSlider/RangeSlider';
 import { useDispatch } from 'react-redux';
@@ -14,24 +12,18 @@ import {
 } from 'store/actions/CreatePasswordActions';
 
 import style from './Settings.module.scss';
+import { SettingsPropsType } from './types';
 
-type SettingsType = {
-  checkboxCount: number;
-  passwordLength: number;
-  isPasswordUppercaseLetters: boolean;
-  isPasswordLowercaseLetters: boolean;
-  isPasswordNumbers: boolean;
-  isPasswordSymbols: boolean;
-};
+export const Settings = (props: SettingsPropsType) => {
+  const {
+    checkboxCount,
+    passwordLength,
+    isPasswordUppercaseLetters,
+    isPasswordLowercaseLetters,
+    isPasswordNumbers,
+    isPasswordSymbols,
+  } = props;
 
-export const Settings: FC<SettingsType> = ({
-  checkboxCount,
-  passwordLength,
-  isPasswordUppercaseLetters,
-  isPasswordLowercaseLetters,
-  isPasswordNumbers,
-  isPasswordSymbols,
-}) => {
   const dispatch = useDispatch();
   const checkboxDisable = (checked: boolean): boolean => checkboxCount <= ONE && checked;
   const onRangeUpdate = (value: Array<number>): void => {

@@ -1,29 +1,16 @@
-import React, { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import React, { ChangeEvent } from 'react';
 
 import style from './Checkbox.module.scss';
+import { CheckboxPropsType } from './types';
 
-type DefaultInputPropsType = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+export const Checkbox = (props: CheckboxPropsType) => {
+  const { onChange, onChangeChecked, className, children, checked, isDisabled } = props;
 
-type CheckboxPropsType = DefaultInputPropsType & {
-  isDisabled: boolean;
-  onChangeChecked: (checked: boolean) => void;
-};
-
-export const Checkbox: React.FC<CheckboxPropsType> = ({
-  onChange,
-  onChangeChecked,
-  className,
-  children,
-  checked,
-  isDisabled,
-}) => {
   const onChangeCallback = (event: ChangeEvent<HTMLInputElement>): void => {
     if (onChange) {
       onChange(event);
     }
+
     if (onChangeChecked) {
       onChangeChecked(event.currentTarget.checked);
     }

@@ -4,26 +4,10 @@ import './RangeSlider.scss';
 import 'nouislider/dist/nouislider.css';
 import Nouislider from 'nouislider-react';
 
-type MapDispatchToPropsType = {
-  onUpdate: (value: Array<number>) => void;
-};
+import { StateType, RangeSliderPropsType } from './types';
 
-type MapStateToPropsType = {
-  startValue: number;
-  min: number;
-  max: number;
-  step: number;
-  disabled: boolean;
-};
-
-export type SuperDoubleRangePropsType = MapStateToPropsType & MapDispatchToPropsType;
-
-type StateType = {
-  start: number;
-};
-
-export class RangeSlider extends React.Component<SuperDoubleRangePropsType, StateType> {
-  constructor(props: SuperDoubleRangePropsType) {
+export class RangeSlider extends React.Component<RangeSliderPropsType, StateType> {
+  constructor(props: RangeSliderPropsType) {
     super(props);
     this.state = {
       start: props.startValue,
