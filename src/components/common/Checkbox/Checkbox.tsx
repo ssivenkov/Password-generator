@@ -25,7 +25,7 @@ export const Checkbox = (props: CheckboxPropsType): JSXElement => {
       <input
         checked={checked}
         className={finalInputClassName}
-        isDisabled={isDisabled}
+        disabled={isDisabled}
         onChange={onChangeCallback}
         type='checkbox'
       />
