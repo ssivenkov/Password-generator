@@ -19,8 +19,11 @@ import React from 'react';
 import { Footer } from 'components/footer/Footer';
 import { Header } from 'components/header/Header';
 import { RoutesContainer } from 'pages/routesContainer/RoutesContainer';
+import SimpleBar from 'simplebar-react';
 
 import './Null.module.scss';
+import 'simplebar/dist/simplebar.min.css';
+import './SimpleBar.scss';
 import styles from './App.module.scss';
 import {
   blueThemeColors,
@@ -85,11 +88,13 @@ const App = () => {
   }
 
   return (
-    <div className={styles.globalContainer}>
-      <Header />
-      <RoutesContainer />
-      <Footer />
-    </div>
+    <SimpleBar style={{ maxHeight: '100vh' }}>
+      <div className={styles.globalContainer}>
+        <Header />
+        <RoutesContainer />
+        <Footer />
+      </div>
+    </SimpleBar>
   );
 };
 

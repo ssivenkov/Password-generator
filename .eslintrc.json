@@ -230,7 +230,7 @@
     // imports
     "no-duplicate-imports": "error",
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "off",
     "import/default": "off",
     "import/namespace": "off",
     "import/order": [
