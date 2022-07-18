@@ -45,6 +45,6 @@
 @media (max-width: 200px) {
     .rangeSliderContainer {
         min-width: 1px;
-        @include adaptive-value("width", 200, $minWidth, 140, 50, px, 1);
+        @include adaptiveWidth("width", 200, $minWidth, 140, 50, px, 1);
     }
 }

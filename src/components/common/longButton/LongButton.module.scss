@@ -8,6 +8,7 @@ $longButtonBorderRadius: 100;
     padding-left: #{$longButtonPaddingHorizontal}px;
     padding-right: #{$longButtonPaddingHorizontal}px;
     border-radius: #{$longButtonBorderRadius}px;
+    color: var(--primary_half-medium);
     font-size: 18px;
     font-weight: 500;
     background-color: var(--primary);
@@ -45,9 +46,9 @@ $startScaleLongButton: 300;
 @media screen and (max-width: #{$startScaleLongButton}px) {
     .longButton {
         word-break: break-word;
-        @include adaptive-value("font-size", $startScaleLongButton, $minWidth, 18, $minTextSize, px, 1);
-        @include adaptive-value("padding-left", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
-        @include adaptive-value("padding-right", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
-        @include adaptive-value("border-radius", $startScaleLongButton, $minWidth, $longButtonBorderRadius, 9, px, 1);
+        @include adaptiveWidth("font-size", $startScaleLongButton, $minWidth, 18, $minTextSize, px, 1);
+        @include adaptiveWidth("padding-left", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
+        @include adaptiveWidth("padding-right", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
+        @include adaptiveWidth("border-radius", $startScaleLongButton, $minWidth, $longButtonBorderRadius, 9, px, 1);
     }
 }

@@ -22,7 +22,6 @@
 
 @media (pointer:fine) {
     .contactButton:hover {
-        border: 2px solid var(--primary_light);
         box-shadow: 0 0 13px 1px var(--primary);
         text-shadow: 0 0 15px var(--primary), 0 0 5px var(--primary);
     }

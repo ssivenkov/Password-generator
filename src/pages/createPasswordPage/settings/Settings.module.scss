@@ -37,6 +37,7 @@ $createPasswordTitleMarginVertical: 18;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding-right: 10px;
 }
 
 $textMarginBottom: 1;
@@ -93,6 +94,10 @@ $textMarginBottom: 1;
         margin-right: 0;
     }
 
+    .leftContainer {
+        padding-right: 0;
+    }
+
     .rightContainer {
         width: 190px;
     }
@@ -103,15 +108,15 @@ $startScaleSettings: 220;
 
 @media (max-width: #{$startScaleSettingsText}px) {
     .title, .lengthText, .descriptionText {
-        @include adaptive-value("font-size", $startScaleSettingsText, $minWidth, $createPasswordTextSize, $minTextSize, px, 1);
+        @include adaptiveWidth("font-size", $startScaleSettingsText, $minWidth, $createPasswordTextSize, $minTextSize, px, 1);
     }
 
     .title {
-        @include adaptive-value("margin-top", $startScaleSettingsText, $minWidth, $createPasswordTitleMarginVertical, 0, px, 1);
+        @include adaptiveWidth("margin-top", $startScaleSettingsText, $minWidth, $createPasswordTitleMarginVertical, 0, px, 1);
     }
 
     .settingsContainer {
-        @include adaptive-value("padding", $startScaleSettingsText, $minWidth, $createPasswordTextSize, 5, px, 1);
+        @include adaptiveWidth("padding", $startScaleSettingsText, $minWidth, $createPasswordTextSize, 5, px, 1);
     }
 }
 

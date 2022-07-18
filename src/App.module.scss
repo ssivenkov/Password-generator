@@ -41,7 +41,7 @@ $startScaleAppMarginHorizontal: 300;
 $sizeAppPaddingHorizontal: 15;
 
 * {
-    --content-width: 680px;
+    --content-width: 780px;
 }
 
 
@@ -54,7 +54,7 @@ $sizeAppPaddingHorizontal: 15;
     user-select: none;
 }
 
-@mixin adaptive-value($property, $maxWidthViewport, $minWidthViewport, $startSize, $endSize, $unit, $type) {
+@mixin adaptiveWidth($property, $maxWidthViewport, $minWidthViewport, $startSize, $endSize, $unit, $type) {
     // $property: string - property name in css format
     // $maxWidthViewport: number - width of the viewport(in pixels) at which scaling begins. With $maxWidthViewport size of $property corresponds to $startSize
     // $minWidthViewport: number - width of the viewport(in pixels) at which scaling ends. With $minWidthViewport size of $property corresponds to $endSize

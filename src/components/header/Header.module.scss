@@ -53,8 +53,8 @@ $itemPadding: 20;
 
 @media screen and (max-width: #{$startScaleHeaderWidth}px) {
     .item a {
-        @include adaptive-value("font-size", $startScaleHeaderWidth, $minWidth, $itemFontSize, $minTextSize, px, 1);
-        @include adaptive-value("padding-left", $startScaleHeaderWidth, $minWidth, $itemPadding, 3, px, 1);
-        @include adaptive-value("padding-right", $startScaleHeaderWidth, $minWidth, $itemPadding, 3, px, 1);
+        @include adaptiveWidth("font-size", $startScaleHeaderWidth, $minWidth, $itemFontSize, $minTextSize, px, 1);
+        @include adaptiveWidth("padding-left", $startScaleHeaderWidth, $minWidth, $itemPadding, 3, px, 1);
+        @include adaptiveWidth("padding-right", $startScaleHeaderWidth, $minWidth, $itemPadding, 3, px, 1);
     }
 }

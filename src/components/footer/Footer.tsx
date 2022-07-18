@@ -10,7 +10,7 @@ export const Footer = () => (
         iconClass='fa-linkedin-in'
         link='https://www.linkedin.com/in/ssivenkov'
       />
-      <ContactButton iconClass='fa-telegram' link='https://t.me/sergei_sivenkov' />
+      <ContactButton iconClass='fa-telegram' link='https://t.me/orihiru' />
       <ContactButton iconClass='fa-github' link='https://github.com/ssivenkov' />
       <ContactButton
         iconClass='fa-skype'

@@ -30,7 +30,6 @@
 
 .title {
     font-size: 18px;
-    text-align: center;
     line-height: 1.3;
     word-break: break-word;
 }
@@ -39,7 +38,7 @@ $startScaleCheckboxTitle: 300;
 
 @media (max-width: #{$startScaleCheckboxTitle}px) {
     .title {
-        @include adaptive-value("font-size", $startScaleCheckboxTitle, $minWidth, 18, $minTextSize, px, 1);
+        @include adaptiveWidth("font-size", $startScaleCheckboxTitle, $minWidth, 18, $minTextSize, px, 1);
     }
 }
 
@@ -50,5 +49,9 @@ $startScaleCheckboxTitle: 300;
 
     .checkbox {
         margin-right: 0;
+    }
+
+    .title {
+        text-align: center;
     }
 }
