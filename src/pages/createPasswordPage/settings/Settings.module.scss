@@ -1,0 +1,131 @@
+@import 'src/App.module';
+
+.settingsContainer {
+    width: 100%;
+    min-width: var(--min-width);
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 35px;
+    border-radius: 7px;
+    background-color: var(--primary_dim);
+    border: 2px solid var(--primary_half-medium);
+}
+
+$createPasswordTextSize: 18;
+$createPasswordTitleMarginVertical: 18;
+
+.title {
+    font-size: #{$createPasswordTextSize}px;
+    margin-top: #{$createPasswordTitleMarginVertical}px;
+    margin-bottom: 12px;
+}
+
+.container {
+    width: 90%;
+    height: 100%;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+}
+
+.leftContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+$textMarginBottom: 1;
+
+.descriptionText {
+    font-size: #{$createPasswordTextSize}px;
+    text-align: center;
+    margin-right: 8px;
+    margin-bottom: #{$textMarginBottom}px;
+}
+
+.lengthText {
+    font-size: #{$createPasswordTextSize}px;
+    min-width: 20px;
+    text-align: center;
+    margin-bottom: #{$textMarginBottom}px;
+}
+
+.rightContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: center;
+}
+
+.checkboxWrapper {
+    margin: 10px;
+}
+
+@media (pointer:coarse) {
+    .settingsContainer {
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        grid-template: none;
+    }
+
+    .rightContainer {
+        width: 190px;
+    }
+}
+
+@media (max-width: 510px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .descriptionText {
+        margin-right: 0;
+    }
+
+    .rightContainer {
+        width: 190px;
+    }
+}
+
+$startScaleSettingsText: 300;
+$startScaleSettings: 220;
+
+@media (max-width: #{$startScaleSettingsText}px) {
+    .title, .lengthText, .descriptionText {
+        @include adaptive-value("font-size", $startScaleSettingsText, $minWidth, $createPasswordTextSize, $minTextSize, px, 1);
+    }
+
+    .title {
+        @include adaptive-value("margin-top", $startScaleSettingsText, $minWidth, $createPasswordTitleMarginVertical, 0, px, 1);
+    }
+
+    .settingsContainer {
+        @include adaptive-value("padding", $startScaleSettingsText, $minWidth, $createPasswordTextSize, 5, px, 1);
+    }
+}
+
+@media (max-width: #{$startScaleSettings}px) {
+    .checkboxWrapper {
+        margin: 10px 0 0 0;
+    }
+
+    .leftContainer {
+        flex-direction: column;
+    }
+
+    .rightContainer {
+        width: 100%;
+        align-items: center;
+    }
+}

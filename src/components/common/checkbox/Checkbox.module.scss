@@ -1,0 +1,54 @@
+@import 'src/App.module';
+
+.labelContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #ccc;
+    border: 2px solid var(--black);
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.checkbox:checked {
+    background-color: var(--white);
+    background-image: url(../../../assets/images/check.png);
+    background-size: cover;
+    border: 2px solid var(--primary_dark);
+}
+
+.title {
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+$startScaleCheckboxTitle: 300;
+
+@media (max-width: #{$startScaleCheckboxTitle}px) {
+    .title {
+        @include adaptive-value("font-size", $startScaleCheckboxTitle, $minWidth, 18, $minTextSize, px, 1);
+    }
+}
+
+@media (max-width: 220px) {
+    .labelContainer {
+        flex-direction: column;
+    }
+
+    .checkbox {
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorText {
+  font-size: 20px;
+}
+
+.linkText {
+  font-size: 22px;
+  margin-top: 26px;
+  color: var(--primary_half-medium);
+}

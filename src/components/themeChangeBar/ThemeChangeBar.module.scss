@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonsContainer {
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background-color: var(--white);
+}
+
+@media (max-width: 275px) {
+    .buttonsContainer {
+        width: 140px;
+    }
+}

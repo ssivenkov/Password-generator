@@ -39,6 +39,7 @@
 
     // typescript
     "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
 
     // react
     "react/boolean-prop-naming": ["error", {

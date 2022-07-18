@@ -1,4 +1,3 @@
-export const EMPTY_STRING = '';
 export const FIRST_ELEMENT = 0;
 export const SECOND_ELEMENT = 1;
 export const THIRD_ELEMENT = 2;
@@ -18,13 +17,14 @@ export const SIX = 6;
 export const SEVEN = 7;
 export const EIGHT = 8;
 export const NINE = 9;
-export const HUNDRED = 100;
+export const FIFTY = 50;
 export const RED_THEME = 'redTheme';
 export const YELLOW_THEME = 'yellowTheme';
 export const GREEN_THEME = 'greenTheme';
 export const BLUE_THEME = 'blueTheme';
 
 export const numbersArr = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE];
+
 export const symbolsArr = [
   '!',
   '?',
@@ -51,6 +51,7 @@ export const symbolsArr = [
   '{',
   '}',
 ];
+
 export const uppercaseLettersArr = [
   'A',
   'B',
@@ -79,6 +80,7 @@ export const uppercaseLettersArr = [
   'Y',
   'Z',
 ];
+
 export const lowercaseLettersArr = [
   'a',
   'b',

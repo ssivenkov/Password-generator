@@ -16,22 +16,27 @@ import {
 
 import React from 'react';
 
-import 'Null.module.scss';
-import style from 'App.module.scss';
-import { ErrorAll } from 'components/common/ErrorPages/ErrorAll';
-import { Footer } from 'components/Footer/Footer';
-import { Header } from 'components/Header/Header';
-import { RoutesContainer } from 'components/RoutesContainer/RoutesContainer';
+import { Footer } from 'components/footer/Footer';
+import { Header } from 'components/header/Header';
+import { RoutesContainer } from 'pages/routesContainer/RoutesContainer';
 
+import './Null.module.scss';
+import styles from './App.module.scss';
 import {
   blueThemeColors,
   greenThemeColors,
   redThemeColors,
   yellowThemeColors,
-} from './components/ThemeChangeBar/Colors/Colors';
-import { JSXElement } from './types/commonTypes';
+} from './colors/themeColors';
 
-export const changeTheme = (userTheme: string, themeColors: Array<string>): void => {
+type ChangeThemeParams = {
+  userTheme: string;
+  themeColors: Array<string>;
+};
+
+export const changeTheme = (params: ChangeThemeParams): void => {
+  const { userTheme, themeColors } = params;
+
   localStorage.setItem('userTheme', userTheme);
   const doc = document.querySelector('html');
 
@@ -48,12 +53,14 @@ export const changeTheme = (userTheme: string, themeColors: Array<string>): void
   }
 };
 
-export const App = (): JSXElement => {
+const App = () => {
   if (localStorage.getItem('userTheme')) {
     let localTheme = GREEN_THEME;
     const userTheme = localStorage.getItem('userTheme') ?? false;
 
-    if (userTheme) localTheme = userTheme;
+    if (userTheme) {
+      localTheme = userTheme;
+    }
 
     let themeColorsPack = greenThemeColors;
 
@@ -73,15 +80,17 @@ export const App = (): JSXElement => {
       default:
         break;
     }
-    changeTheme(localTheme, themeColorsPack);
+
+    changeTheme({ userTheme: localTheme, themeColors: themeColorsPack });
   }
 
   return (
-    <div className={style.globalContainer}>
-      <ErrorAll />
+    <div className={styles.globalContainer}>
       <Header />
       <RoutesContainer />
       <Footer />
     </div>
   );
 };
+
+export default App;

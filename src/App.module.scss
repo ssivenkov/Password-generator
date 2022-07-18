@@ -33,18 +33,55 @@ html {
 }
 
 // width
+$maxWidthForMixin: 1920;
+$minWidth: 100;
+$textSize: 18;
+$minTextSize: 12;
+$startScaleAppMarginHorizontal: 300;
+$sizeAppPaddingHorizontal: 15;
+
 * {
     --content-width: 680px;
 }
 
+
+// mixins
 @mixin no-select {
     -ms-user-select: none;
     -webkit-touch-callout: none;
-    -khtml-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
 }
+
+@mixin adaptive-value($property, $maxWidthViewport, $minWidthViewport, $startSize, $endSize, $unit, $type) {
+    // $property: string - property name in css format
+    // $maxWidthViewport: number - width of the viewport(in pixels) at which scaling begins. With $maxWidthViewport size of $property corresponds to $startSize
+    // $minWidthViewport: number - width of the viewport(in pixels) at which scaling ends. With $minWidthViewport size of $property corresponds to $endSize
+    // $startSize: number - size of $property at viewport size $maxWidthViewport
+    // $endSize: number - size of $property at viewport size $minWidthViewport
+    // $unit: string - unit for $property
+    // $type: number - mixin operation mode
+
+    $addSize: $startSize - $endSize;
+    @if $type==1 {
+        // only if is less container
+        #{$property}: $startSize + $unit;
+        @media (max-width: #{$maxWidthViewport + $unit}) {
+            #{$property}: calc(#{$endSize + $unit} + #{$addSize} * ((100vw - #{$minWidthViewport}px) / #{$maxWidthViewport - $minWidthViewport}));
+        }
+    } @else if $type==2 {
+        // only if is more container
+        #{$property}: $startSize + $unit;
+        @media (min-width: #{$maxWidthViewport + $unit}) {
+            #{$property}: calc(#{$endSize + $unit} + #{$addSize} * ((100vw - #{$minWidthViewport}px) / #{$maxWidthForMixin - $minWidthViewport}));
+        }
+    } @else {
+        // always
+        #{$property}: calc(#{$endSize + $unit} + #{$addSize} * ((100vw - #{$minWidthViewport}px) / #{$maxWidthForMixin - $minWidthViewport}));
+    }
+}
+
 
 // hide default background color on click
 * {

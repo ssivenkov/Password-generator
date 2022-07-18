@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { store } from 'store/store';
 
-import { App } from './App';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>

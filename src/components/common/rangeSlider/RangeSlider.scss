@@ -1,0 +1,50 @@
+@import 'src/App.module';
+
+.rangeSliderContainer {
+    display: inline-block;
+    width: 100%;
+    min-width: 60px;
+    margin: 20px;
+}
+
+/* Nouislider styles */
+.noUi-target {
+    height: 6px !important;
+    border: none !important;
+    cursor: pointer !important;
+    background: var(--primary_almost-medium) !important;
+    box-shadow: none !important;
+}
+
+.noUi-connect {
+    background: var(--primary_almost-medium) !important;
+}
+
+.noUi-tooltip {
+    color: black !important;
+    font-weight: 700 !important;
+    bottom: 200% !important;
+}
+
+.noUi-handle {
+    background: var(--white) !important;
+    border-radius: 50% !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-shadow: none !important;
+    border: 5px solid var(--primary_half-medium) !important;
+    right: -10px !important;
+    top: -7px !important;
+    cursor: grab !important;
+}
+
+.noUi-handle:before, .noUi-handle:after {
+    content: none !important;
+}
+
+@media (max-width: 200px) {
+    .rangeSliderContainer {
+        min-width: 1px;
+        @include adaptive-value("width", 200, $minWidth, 140, 50, px, 1);
+    }
+}

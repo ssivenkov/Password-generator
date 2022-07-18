@@ -1,0 +1,53 @@
+@import 'src/App.module';
+
+$longButtonPaddingHorizontal: 35;
+$longButtonBorderRadius: 100;
+
+.longButton {
+    padding: 12px 0;
+    padding-left: #{$longButtonPaddingHorizontal}px;
+    padding-right: #{$longButtonPaddingHorizontal}px;
+    border-radius: #{$longButtonBorderRadius}px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: var(--primary);
+    margin-bottom: 0;
+}
+
+@media (pointer:coarse) {
+    .longButton {
+        padding: 12px 14px;
+    }
+
+    .longButton:active {
+        box-shadow: 0 0 6px 3px var(--primary_medium);
+    }
+}
+
+@media (pointer:fine) {
+    .longButton:hover {
+        box-shadow: 0 0 6px 3px var(--primary_medium);
+    }
+}
+
+@media (max-width: 430px) {
+    .longButton {
+        margin-bottom: 16px;
+    }
+
+    .longButton:last-child {
+        margin-bottom: 0;
+    }
+}
+
+$startScaleLongButton: 300;
+
+@media screen and (max-width: #{$startScaleLongButton}px) {
+    .longButton {
+        word-break: break-word;
+        @include adaptive-value("font-size", $startScaleLongButton, $minWidth, 18, $minTextSize, px, 1);
+        @include adaptive-value("padding-left", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
+        @include adaptive-value("padding-right", $startScaleLongButton, $minWidth, $longButtonPaddingHorizontal, 5, px, 1);
+        @include adaptive-value("border-radius", $startScaleLongButton, $minWidth, $longButtonBorderRadius, 9, px, 1);
+    }
+}

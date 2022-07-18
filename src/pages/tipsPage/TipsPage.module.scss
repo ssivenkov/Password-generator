@@ -1,0 +1,72 @@
+@import 'src/App.module';
+
+$tipsPageContainerMarginVertical: 40;
+$tipsPageContentContainerMarginVertical: 15;
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: #{$sizeAppPaddingHorizontal}px;
+    padding-right: #{$sizeAppPaddingHorizontal}px;
+    margin-top: #{$tipsPageContainerMarginVertical}px;
+    margin-bottom: #{$tipsPageContainerMarginVertical}px;
+}
+
+.contentContainer {
+    width: 100%;
+    max-width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+    margin-top: #{$tipsPageContentContainerMarginVertical}px;
+    margin-bottom: #{$tipsPageContentContainerMarginVertical}px;
+    line-height: 1.35;
+    text-align: justify;
+    word-break: break-word;
+    background-color: var(--white);
+    border-radius: 7px;
+}
+
+.question {
+    margin: 0 10px 10px;
+    font-weight: 700;
+    text-align: center;
+    word-break: break-word;
+}
+
+@media (pointer:coarse) {
+    .container {
+        padding: 0 15px;
+        margin: 20px 0;
+    }
+
+    .contentContainer {
+        margin: 10px;
+    }
+}
+
+$startScaleTipsPage: 300;
+
+@media screen and (max-width: #{$startScaleAppMarginHorizontal}px) {
+    .container {
+        @include adaptive-value("padding-left", $startScaleAppMarginHorizontal, 250, $sizeAppPaddingHorizontal, 0, px, 1);
+        @include adaptive-value("padding-right", $startScaleAppMarginHorizontal, 250, $sizeAppPaddingHorizontal, 0, px, 1);
+    }
+}
+
+@media screen and (max-width: #{$startScaleTipsPage}px) {
+    .container {
+        @include adaptive-value("font-size", $startScaleTipsPage, $minWidth, $textSize, $minTextSize, px, 1);
+        @include adaptive-value("margin-top", $startScaleTipsPage, $minWidth, $tipsPageContainerMarginVertical, 5, px, 1);
+        @include adaptive-value("margin-bottom", $startScaleTipsPage, $minWidth, $tipsPageContainerMarginVertical, 5, px, 1);
+    }
+
+    .contentContainer {
+        @include adaptive-value("padding", $startScaleTipsPage, $minWidth, 20, 5, px, 1);
+        @include adaptive-value("margin-top", $startScaleTipsPage, $minWidth, $tipsPageContentContainerMarginVertical, 5, px, 1);
+        @include adaptive-value("margin-bottom", $startScaleTipsPage, $minWidth, $tipsPageContentContainerMarginVertical, 5, px, 1);
+    }
+}
