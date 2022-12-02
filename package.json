@@ -42,7 +42,7 @@
     "typescript": "4.5.5"
   },
   "scripts": {
-    "husky install": "husky install",
+    "husky_install": "husky install",
     "start": "react-scripts start",
     "lint": "eslint . --color && tsc --noEmit",
     "build": "react-scripts build",
