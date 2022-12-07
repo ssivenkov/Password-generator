@@ -45,6 +45,7 @@
     "husky_install": "husky install",
     "start": "react-scripts start",
     "lint": "eslint . --color && tsc --noEmit",
+    "-- additional --": "",
     "build": "react-scripts build",
     "deploy": "gh-pages -d build"
   },
