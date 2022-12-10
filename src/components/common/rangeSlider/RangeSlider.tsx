@@ -22,7 +22,7 @@ export class RangeSlider extends React.Component<RangeSliderPropsType, StateType
       <div className='rangeSliderContainer'>
         <Nouislider
           animate={false}
-          connect
+          connect={true}
           disabled={disabled}
           onUpdate={onUpdate}
           range={{ min, max }}

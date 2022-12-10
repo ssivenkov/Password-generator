@@ -73,7 +73,7 @@
       "noSortAlphabetically": false
     }],
     "react/void-dom-elements-no-children": "error",
-    "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-boolean-value": ["error", "always"],
     "react/jsx-child-element-spacing": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-closing-tag-location": "error",
@@ -230,7 +230,7 @@
     // imports
     "no-duplicate-imports": "error",
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "off",
     "import/default": "off",
     "import/namespace": "off",
     "import/order": [
