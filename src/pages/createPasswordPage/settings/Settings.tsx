@@ -1,13 +1,9 @@
-import { FIRST_ELEMENT, ONE, EIGHT, FIFTY } from 'constants/common';
+import { EIGHT, FIFTY, FIRST_ELEMENT, ONE } from 'constants/common';
 
 import { Checkbox } from 'components/common/checkbox/Checkbox';
 import { RangeSlider } from 'components/common/rangeSlider/RangeSlider';
-import { useDispatch } from 'react-redux';
-import { setLengthAction } from 'store/actions/createPasswordReducerActions/setLengthAction';
-import { setLowercaseLettersAction } from 'store/actions/createPasswordReducerActions/setLowercaseLettersAction';
-import { setNumbersAction } from 'store/actions/createPasswordReducerActions/setNumbersAction';
-import { setSymbolsAction } from 'store/actions/createPasswordReducerActions/setSymbolsAction';
-import { setUppercaseLettersAction } from 'store/actions/createPasswordReducerActions/setUppercaseLettersAction';
+import { createPasswordSlice } from 'redux/reducers/createPasswordSlice/CreatePasswordSlice';
+import { useAppDispatch } from 'redux/store';
 
 import styles from './Settings.module.scss';
 import { SettingsPropsType } from './types';
@@ -22,7 +18,10 @@ export const Settings = (props: SettingsPropsType) => {
     isPasswordSymbols,
   } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  const { setLength, setUppercaseLetters, setLowercaseLetters, setNumbers, setSymbols } =
+    createPasswordSlice.actions;
 
   const checkboxDisableCondition = (checked: boolean): boolean =>
     checkboxCount <= ONE && checked;
@@ -30,31 +29,31 @@ export const Settings = (props: SettingsPropsType) => {
   const onRangeUpdate = (value: Array<number>): void => {
     const length = Math.round(Number(value[FIRST_ELEMENT]));
 
-    dispatch(setLengthAction({ length }));
+    dispatch(setLength(length));
   };
 
   const onUppercaseLettersChange = (): void => {
     const uppercaseLetters = !isPasswordUppercaseLetters;
 
-    dispatch(setUppercaseLettersAction({ uppercaseLetters }));
+    dispatch(setUppercaseLetters(uppercaseLetters));
   };
 
   const onLowercaseLettersChange = (): void => {
     const lowercaseLetters = !isPasswordLowercaseLetters;
 
-    dispatch(setLowercaseLettersAction({ lowercaseLetters }));
+    dispatch(setLowercaseLetters(lowercaseLetters));
   };
 
   const onNumbersChange = (): void => {
     const numbers = !isPasswordNumbers;
 
-    dispatch(setNumbersAction({ numbers }));
+    dispatch(setNumbers(numbers));
   };
 
   const onSymbolsChange = (): void => {
     const symbols = !isPasswordSymbols;
 
-    dispatch(setSymbolsAction({ symbols }));
+    dispatch(setSymbols(symbols));
   };
 
   return (

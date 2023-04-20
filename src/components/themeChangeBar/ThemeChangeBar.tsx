@@ -1,12 +1,12 @@
 import { RED_THEME, YELLOW_THEME, GREEN_THEME, BLUE_THEME } from 'constants/common';
 
-import { changeTheme } from 'App';
 import {
   blueThemeColors,
   greenThemeColors,
   redThemeColors,
   yellowThemeColors,
 } from 'colors/themeColors';
+import { changeTheme } from 'themes/changeTheme';
 
 import { ThemeButton } from './themeButton/ThemeButton';
 import styles from './ThemeChangeBar.module.scss';

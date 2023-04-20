@@ -1,60 +1,23 @@
-import {
-  BLUE_THEME,
-  EIGHTH_ELEMENT,
-  FIFTH_ELEMENT,
-  FIRST_ELEMENT,
-  FOURTH_ELEMENT,
-  GREEN_THEME,
-  NINTH_ELEMENT,
-  RED_THEME,
-  SECOND_ELEMENT,
-  SEVENTH_ELEMENT,
-  SIXTH_ELEMENT,
-  THIRD_ELEMENT,
-  YELLOW_THEME,
-} from 'constants/common';
+import { BLUE_THEME, GREEN_THEME, RED_THEME, YELLOW_THEME } from 'constants/common';
 
 import React from 'react';
 
-import { Footer } from 'components/footer/Footer';
-import { Header } from 'components/header/Header';
-import { RoutesContainer } from 'pages/routesContainer/RoutesContainer';
-import SimpleBar from 'simplebar-react';
-
-import './Null.module.scss';
+import 'Null.module.scss';
 import 'simplebar/dist/simplebar.min.css';
 import './SimpleBar.scss';
-import styles from './App.module.scss';
 import {
   blueThemeColors,
   greenThemeColors,
   redThemeColors,
   yellowThemeColors,
-} from './colors/themeColors';
+} from 'colors/themeColors';
+import { Footer } from 'components/footer/Footer';
+import { Header } from 'components/header/Header';
+import { RoutesContainer } from 'pages/routesContainer/RoutesContainer';
+import SimpleBar from 'simplebar-react';
+import { changeTheme } from 'themes/changeTheme';
 
-type ChangeThemeParams = {
-  userTheme: string;
-  themeColors: Array<string>;
-};
-
-export const changeTheme = (params: ChangeThemeParams): void => {
-  const { userTheme, themeColors } = params;
-
-  localStorage.setItem('userTheme', userTheme);
-  const doc = document.querySelector('html');
-
-  if (doc) {
-    doc.style.setProperty('--primary_light', themeColors[FIRST_ELEMENT]);
-    doc.style.setProperty('--primary', themeColors[SECOND_ELEMENT]);
-    doc.style.setProperty('--primary_dim', themeColors[THIRD_ELEMENT]);
-    doc.style.setProperty('--primary_medium', themeColors[FOURTH_ELEMENT]);
-    doc.style.setProperty('--primary_almost-medium', themeColors[FIFTH_ELEMENT]);
-    doc.style.setProperty('--primary_half-medium', themeColors[SIXTH_ELEMENT]);
-    doc.style.setProperty('--primary_dark', themeColors[SEVENTH_ELEMENT]);
-    doc.style.setProperty('--background1', themeColors[EIGHTH_ELEMENT]);
-    doc.style.setProperty('--background2', themeColors[NINTH_ELEMENT]);
-  }
-};
+import styles from './App.module.scss';
 
 const App = () => {
   if (localStorage.getItem('userTheme')) {
@@ -89,7 +52,7 @@ const App = () => {
 
   return (
     <SimpleBar style={{ maxHeight: '100vh' }}>
-      <div className={styles.globalContainer}>
+      <div className={styles.appContainer}>
         <Header />
         <RoutesContainer />
         <Footer />

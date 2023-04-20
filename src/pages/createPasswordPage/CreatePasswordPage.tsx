@@ -1,53 +1,46 @@
 import {
-  ZERO,
-  ONE,
-  uppercaseLettersArr,
   lowercaseLettersArr,
   numbersArr,
+  ONE,
   symbolsArr,
+  uppercaseLettersArr,
+  ZERO,
 } from 'constants/common';
 
 import { useEffect } from 'react';
 
 import { LongButton } from 'components/common/longButton/LongButton';
 import { ThemeChangeBar } from 'components/themeChangeBar/ThemeChangeBar';
-import { useDispatch, useSelector } from 'react-redux';
-import { setCheckboxCountAction } from 'store/actions/createPasswordReducerActions/setCheckboxCountAction';
-import { setCopiedStatusAction } from 'store/actions/createPasswordReducerActions/setCopiedStatusAction';
-import { setPasswordAction } from 'store/actions/createPasswordReducerActions/setPasswordAction';
-import {
-  checkboxCountSelector,
-  copiedSelector,
-  lengthSelector,
-  lowercaseLettersSelector,
-  numbersSelector,
-  passwordSelector,
-  symbolsSelector,
-  uppercaseLettersSelector,
-} from 'store/selectors/createPasswordSelector';
+import { useAppSelector } from 'hooks/redux';
+import { createPasswordSlice } from 'redux/reducers/createPasswordSlice/CreatePasswordSlice';
+import { useAppDispatch } from 'redux/store';
 
 import styles from './CreatePasswordPage.module.scss';
 import { Settings } from './settings/Settings';
 
 export const CreatePasswordPage = () => {
-  const dispatch = useDispatch();
+  const {
+    copied: copiedStatus,
+    checkboxCount,
+    length: passwordLength,
+    uppercaseLetters,
+    lowercaseLetters,
+    numbers,
+    symbols,
+    password,
+  } = useAppSelector((state) => state.createPasswordReducer);
 
-  const checkboxCount = useSelector(checkboxCountSelector);
-  const passwordLength = useSelector(lengthSelector);
-  const passwordUppercaseLetters = useSelector(uppercaseLettersSelector);
-  const passwordLowercaseLetters = useSelector(lowercaseLettersSelector);
-  const passwordNumbers = useSelector(numbersSelector);
-  const passwordSymbols = useSelector(symbolsSelector);
-  const password = useSelector(passwordSelector);
-  const copiedStatus = useSelector(copiedSelector);
+  const dispatch = useAppDispatch();
+
+  const { setCopiedStatus, setCheckboxCount, setPassword } = createPasswordSlice.actions;
 
   let result = '';
   const maxSameSignTypeRepeatCount = ONE;
   const passwordSymbolsProportion =
-    Number(passwordUppercaseLetters) +
-    Number(passwordLowercaseLetters) +
-    Number(passwordNumbers) +
-    Number(passwordSymbols);
+    Number(uppercaseLetters) +
+    Number(lowercaseLetters) +
+    Number(numbers) +
+    Number(symbols);
   const maxPortionLength = Math.floor(passwordLength / passwordSymbolsProportion);
 
   /**
@@ -77,20 +70,20 @@ export const CreatePasswordPage = () => {
 
   const signSetsArr: Array<string[] | number[]> = [];
   const fillingSignSetsArr = (): void => {
-    if (passwordUppercaseLetters) signSetsArr.push(uppercaseLettersArr);
+    if (uppercaseLetters) signSetsArr.push(uppercaseLettersArr);
 
-    if (passwordLowercaseLetters) signSetsArr.push(lowercaseLettersArr);
+    if (lowercaseLetters) signSetsArr.push(lowercaseLettersArr);
 
-    if (passwordNumbers) signSetsArr.push(numbersArr);
+    if (numbers) signSetsArr.push(numbersArr);
 
-    if (passwordSymbols) signSetsArr.push(symbolsArr);
+    if (symbols) signSetsArr.push(symbolsArr);
   };
 
   fillingSignSetsArr();
 
   const currentCheckboxCount = signSetsArr.length;
 
-  dispatch(setCheckboxCountAction({ checkboxCount: currentCheckboxCount }));
+  dispatch(setCheckboxCount(currentCheckboxCount));
 
   const generatePassword = (): string => {
     addPortion(signSetsArr[Math.floor(Math.random() * signSetsArr.length)]);
@@ -110,29 +103,23 @@ export const CreatePasswordPage = () => {
 
   const passwordGenerate = (): void => {
     if (copiedStatus) {
-      dispatch(setCopiedStatusAction({ copied: false }));
+      dispatch(setCopiedStatus(false));
     }
 
     const password = generatePassword();
 
-    dispatch(setPasswordAction({ password }));
+    dispatch(setPassword(password));
   };
 
   const onCopyPasswordClick = (): void => {
     navigator.clipboard.writeText(password).then(() => {
-      dispatch(setCopiedStatusAction({ copied: true }));
+      dispatch(setCopiedStatus(true));
     });
   };
 
   useEffect(() => {
     passwordGenerate();
-  }, [
-    passwordLength,
-    passwordUppercaseLetters,
-    passwordLowercaseLetters,
-    passwordNumbers,
-    passwordSymbols,
-  ]);
+  }, [passwordLength, uppercaseLetters, lowercaseLetters, numbers, symbols]);
 
   return (
     <div className={styles.container}>
@@ -150,10 +137,10 @@ export const CreatePasswordPage = () => {
       </div>
       <Settings
         checkboxCount={checkboxCount}
-        isPasswordLowercaseLetters={passwordLowercaseLetters}
-        isPasswordNumbers={passwordNumbers}
-        isPasswordSymbols={passwordSymbols}
-        isPasswordUppercaseLetters={passwordUppercaseLetters}
+        isPasswordLowercaseLetters={lowercaseLetters}
+        isPasswordNumbers={numbers}
+        isPasswordSymbols={symbols}
+        isPasswordUppercaseLetters={uppercaseLetters}
         passwordLength={passwordLength}
       />
       <ThemeChangeBar />
