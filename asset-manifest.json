@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Password-generator/static/css/main.5706c2be.chunk.css",
-    "main.js": "/Password-generator/static/js/main.4090b4ad.chunk.js",
-    "main.js.map": "/Password-generator/static/js/main.4090b4ad.chunk.js.map",
+    "main.css": "/Password-generator/static/css/main.4c26336d.chunk.css",
+    "main.js": "/Password-generator/static/js/main.b7d2fa8d.chunk.js",
+    "main.js.map": "/Password-generator/static/js/main.b7d2fa8d.chunk.js.map",
     "runtime-main.js": "/Password-generator/static/js/runtime-main.309950ee.js",
     "runtime-main.js.map": "/Password-generator/static/js/runtime-main.309950ee.js.map",
-    "static/css/2.6374dd04.chunk.css": "/Password-generator/static/css/2.6374dd04.chunk.css",
-    "static/js/2.a5694a41.chunk.js": "/Password-generator/static/js/2.a5694a41.chunk.js",
-    "static/js/2.a5694a41.chunk.js.map": "/Password-generator/static/js/2.a5694a41.chunk.js.map",
+    "static/css/2.2a2d34a9.chunk.css": "/Password-generator/static/css/2.2a2d34a9.chunk.css",
+    "static/js/2.1951b4e5.chunk.js": "/Password-generator/static/js/2.1951b4e5.chunk.js",
+    "static/js/2.1951b4e5.chunk.js.map": "/Password-generator/static/js/2.1951b4e5.chunk.js.map",
     "index.html": "/Password-generator/index.html",
-    "static/css/2.6374dd04.chunk.css.map": "/Password-generator/static/css/2.6374dd04.chunk.css.map",
-    "static/css/main.5706c2be.chunk.css.map": "/Password-generator/static/css/main.5706c2be.chunk.css.map",
-    "static/js/2.a5694a41.chunk.js.LICENSE.txt": "/Password-generator/static/js/2.a5694a41.chunk.js.LICENSE.txt"
+    "static/css/2.2a2d34a9.chunk.css.map": "/Password-generator/static/css/2.2a2d34a9.chunk.css.map",
+    "static/css/main.4c26336d.chunk.css.map": "/Password-generator/static/css/main.4c26336d.chunk.css.map",
+    "static/js/2.1951b4e5.chunk.js.LICENSE.txt": "/Password-generator/static/js/2.1951b4e5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.309950ee.js",
-    "static/css/2.6374dd04.chunk.css",
-    "static/js/2.a5694a41.chunk.js",
-    "static/css/main.5706c2be.chunk.css",
-    "static/js/main.4090b4ad.chunk.js"
+    "static/css/2.2a2d34a9.chunk.css",
+    "static/js/2.1951b4e5.chunk.js",
+    "static/css/main.4c26336d.chunk.css",
+    "static/js/main.b7d2fa8d.chunk.js"
   ]
 }
